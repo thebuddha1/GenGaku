@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\WritingCourseController;
+use App\Http\Controllers\MainCourseController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +16,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/hiragana1', [WritingCourseController::class, 'hiraganaTest1']);
+Route::get('/hiragana2', [WritingCourseController::class, 'hiraganaTest2']);
+Route::get('/hiragana3', [WritingCourseController::class, 'hiraganaTest3']);
+Route::get('/hiragana4', [WritingCourseController::class, 'hiraganaTest4']);
+
+Route::get('/katakana1', [WritingCourseController::class, 'katakanaTest1']);
+Route::get('/katakana2', [WritingCourseController::class, 'katakanaTest2']);
+Route::get('/katakana3', [WritingCourseController::class, 'katakanaTest3']);
+Route::get('/katakana4', [WritingCourseController::class, 'katakanaTest4']);
+
+
+Route::get('/quiz', function () {
+    return view('hiragana_test');
 });
 
 Route::view('/maincourse-start', 'courses/maincourse-start')->name('courses/maincourse.start');

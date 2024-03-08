@@ -9,6 +9,8 @@ class Hiragana extends Model
 {
     use HasFactory;
 
+    protected $table = 'hiragana';
+
     protected $fillable = [
         'character',
         'sound',

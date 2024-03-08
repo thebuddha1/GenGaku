@@ -9,6 +9,8 @@ class Katakana extends Model
 {
     use HasFactory;
 
+    protected $table = 'katakana';
+
     protected $fillable = [
         'character',
         'sound',
