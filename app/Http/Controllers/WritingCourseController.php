@@ -103,12 +103,12 @@ class WritingCourseController extends Controller
         shuffle($buttonContent);
 
         $labelContent = implode('', $randomSounds);
-        $invisibleLabelContent = implode('', $selectedHiragana);
+        $characterLabelContent = implode('', $selectedHiragana);
 
         return view('hiragana4', [
             'labelContent' => $labelContent,
             'buttonContent' => $buttonContent,
-            'invisibleLabelContent' => $invisibleLabelContent,
+            'characterLabelContent' => $characterLabelContent,
         ]);
     }
     //katakana
@@ -116,21 +116,21 @@ class WritingCourseController extends Controller
     public function katakanaTest1()
     {
 
-        $katakanaLesson1 = Katakana::where('lesson', 1)->inRandomOrder()->first();
+        $katakana = Katakana::where('lesson', 1)->inRandomOrder()->first();
 
         $randomSounds = Katakana::where('lesson', 1)
-            ->where('sound', '!=', $katakanaLesson1->sound)
+            ->where('sound', '!=', $katakana->sound)
             ->inRandomOrder()
             ->limit(3)
             ->pluck('sound')
             ->toArray();
 
-        $randomSounds[] = $katakanaLesson1->sound;
+        $randomSounds[] = $katakana->sound;
 
         shuffle($randomSounds);
 
         return view('katakana', [
-            'katakanaLesson1' => $katakanaLesson1,
+            'katakana' => $katakana,
             'randomSounds' => $randomSounds,
         ]);
     }
@@ -205,12 +205,12 @@ class WritingCourseController extends Controller
         shuffle($buttonContent);
 
         $labelContent = implode('', $randomSounds);
-        $invisibleLabelContent = implode('', $selectedKatakana);
+        $characterLabelContent = implode('', $selectedKatakana);
 
         return view('katakana4', [
             'labelContent' => $labelContent,
             'buttonContent' => $buttonContent,
-            'invisibleLabelContent' => $invisibleLabelContent,
+            'characterLabelContent' => $characterLabelContent,
         ]);
     }
 }

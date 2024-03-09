@@ -7,6 +7,7 @@
 </head>
 <body>
     <div>
+        
         <button onclick="loadNextQuiz()" id="loadQuizButton">Next</button>
     </div>
     <div id="quizContainer">

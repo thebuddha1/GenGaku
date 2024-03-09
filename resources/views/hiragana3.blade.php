@@ -35,27 +35,35 @@
     <div>
         <div style="margin-bottom: 10px;">
             @foreach ($buttonContent as $button)
-                <button style="margin-right: 5px;" onclick="updateTextbox('{{ $button }}')">{{ $button }}</button>
+                <button style="margin-right: 5px;" class="hiragana-button" data-sound="{{ $button }}">{{ $button }}</button>
             @endforeach
         </div>
     </div>
 
     <div>
-        <button style="margin-top: 10px;" onclick="check()">Check</button>
+        <button style="margin-top: 10px;" id="check-button">Check</button>
         <div id="feedback"></div>
     </div>
 
     <script>
-        function updateTextbox(sound) {
-            var textBox = document.getElementById('hiraganaInput');
-            textBox.value += sound;
-        }
+        var buttons = document.querySelectorAll('.hiragana-button');
+        var textBox = document.getElementById('hiraganaInput');
+        var soundLabel = document.getElementById('soundLabel');
+        var feedbackDiv = document.getElementById('feedback');
+        var checkButton = document.getElementById('check-button');
 
-        function check() {
-            var textBox = document.getElementById('hiraganaInput');
-            var soundLabel = document.getElementById('soundLabel');
-            var feedbackDiv = document.getElementById('feedback');
+        buttons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                buttons.forEach(function (btn) {
+                    btn.classList.remove('highlight');
+                });
 
+                this.classList.add('highlight');
+                textBox.value += this.getAttribute('data-sound');
+            });
+        });
+
+        checkButton.addEventListener('click', function () {
             if (textBox.value === soundLabel.textContent) {
                 feedbackDiv.textContent = 'Match!';
                 feedbackDiv.className = 'match-feedback';
@@ -63,7 +71,7 @@
                 feedbackDiv.textContent = 'Mismatch!';
                 feedbackDiv.className = 'mismatch-feedback';
             }
-        }
+        });
     </script>
 
 </body>

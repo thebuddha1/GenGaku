@@ -33,6 +33,10 @@ Route::get('/quiz', function () {
     return view('hiragana_test');
 });
 
+Route::get('/quiz-kat', function () {
+    return view('katakana_test');
+});
+
 Route::view('/maincourse-start', 'courses/maincourse-start')->name('courses/maincourse.start');
 Route::view('/writingcourse-start', 'courses/writingcourse-start')->name('courses/writingcourse.start');
 Route::view('/friends', 'socials/friendsmain')->name('socials/friendsmain');
