@@ -1,5 +1,3 @@
-<!-- hiragana1.blade.php -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,41 +31,54 @@
     </div>
 
     <script>
-        var buttons = document.querySelectorAll('.hiragana-button');
-        var checkButton = document.getElementById('check-button');
-        var correctSound = '{{ $hiragana->sound }}';
+    var buttons = document.querySelectorAll('.hiragana-button');
+    var checkButton = document.getElementById('check-button');
+    var correctSound = '{{ $hiragana->sound }}';
+    var feedbackGiven = false;
 
-        buttons.forEach(function (button) {
-            button.addEventListener('click', function () {
+    buttons.forEach(function (button) {
+        button.addEventListener('click', function () {
+            if (!feedbackGiven) {
                 buttons.forEach(function (btn) {
                     btn.classList.remove('highlight');
                 });
 
                 this.classList.add('highlight');
-            });
-        });
-
-        checkButton.addEventListener('click', function () {
-            var selectedButton = document.querySelector('.hiragana-button.highlight');
-            var feedbackDiv = document.getElementById('feedback');
-
-            if (selectedButton) {
-                var selectedSound = selectedButton.getAttribute('data-sound');
-
-                if (selectedSound === correctSound) {
-                    feedbackDiv.textContent = 'Match!';
-                    feedbackDiv.className = 'match-feedback';
-                } else {
-                    feedbackDiv.textContent = 'Mismatch!';
-                    feedbackDiv.className = 'mismatch-feedback';
-                }
-            } else {
-                feedbackDiv.textContent = 'Please select a sound';
-                feedbackDiv.className = 'mismatch-feedback';
             }
         });
+    });
 
-    </script>
+    checkButton.addEventListener('click', function () {
+        var selectedButton = document.querySelector('.hiragana-button.highlight');
+        var feedbackDiv = document.getElementById('feedback');
+
+        if (selectedButton) {
+            var selectedSound = selectedButton.getAttribute('data-sound');
+
+            if (selectedSound === correctSound) {
+                feedbackDiv.textContent = 'Match!';
+                feedbackDiv.className = 'match-feedback';
+            } else {
+                feedbackDiv.textContent = 'Mismatch!';
+                feedbackDiv.className = 'mismatch-feedback';
+            }
+
+            feedbackGiven = true;
+
+            // Disable all buttons and the Check button after feedback
+            buttons.forEach(function (btn) {
+                btn.disabled = true;
+            });
+
+            checkButton.disabled = true;
+        } else {
+            feedbackDiv.textContent = 'Please select a sound';
+            feedbackDiv.className = 'mismatch-feedback';
+        }
+    });
+
+</script>
+
 
 </body>
 </html>

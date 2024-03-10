@@ -52,6 +52,13 @@
         var feedbackDiv = document.getElementById('feedback');
         var checkButton = document.getElementById('check-button');
 
+        function disableButtons() {
+            buttons.forEach(function (button) {
+                button.disabled = true;
+            });
+            checkButton.disabled = true;
+        }
+
         buttons.forEach(function (button) {
             button.addEventListener('click', function () {
                 buttons.forEach(function (btn) {
@@ -64,6 +71,8 @@
         });
 
         checkButton.addEventListener('click', function () {
+            disableButtons(); // Disable buttons on check
+
             if (textBox.value === soundLabel.textContent) {
                 feedbackDiv.textContent = 'Match!';
                 feedbackDiv.className = 'match-feedback';
