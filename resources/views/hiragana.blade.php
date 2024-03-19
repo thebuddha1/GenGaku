@@ -30,7 +30,17 @@
         <div id="feedback"></div>
     </div>
 
+        <!------------------------>
+    <div>
+        <label id="expLossLabel"><span id="lostExperienceValue">0</span></label>
+    </div>
+    <div>
+        <label id="mistakesLabel"><span id="mistakesValue">0</span></label>
+    </div>
+
     <script>
+    var expLoss = 0;
+    var mistakes = 0;
     var buttons = document.querySelectorAll('.hiragana-button');
     var checkButton = document.getElementById('check-button');
     var correctSound = '{{ $hiragana->sound }}';
@@ -61,6 +71,11 @@
             } else {
                 feedbackDiv.textContent = 'Mismatch!';
                 feedbackDiv.className = 'mismatch-feedback';
+
+                mistakes++;
+                mistakesLabel.textContent = mistakes;
+                expLoss+= 15;
+                expLossLabel.textContent = expLoss;
             }
 
             feedbackGiven = true;
@@ -78,7 +93,5 @@
     });
 
 </script>
-
-
 </body>
 </html>

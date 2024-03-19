@@ -10,6 +10,12 @@
         <label id="pressCountLabel" style="display:none;">Press count: 0/15</label>
         <button onclick="loadNextQuiz()" id="loadQuizButton">Next</button>
     </div>
+    <div>
+        <label id="experienceLabel">your experience: </label>
+    </div>
+    <div>
+        <label id="mistakesMainLabel">your mistakes: </label>
+    </div>
     <div id="quizContainer">
         <h1>
             Press the next button to start the quiz
@@ -20,7 +26,8 @@
         <h1>
             Congratulations! You've completed 15 quizzes.
         </h1>
-        <label id="experienceLable">your experience: </label>
+        <label id="experienceLabel">your experience: </label>
+        <label id="mistakesMainLabel">your mistakes: </label>
         <div>
             <button onclick="redirectToQuiz()">Go to Quiz</button>
         </div>
@@ -30,9 +37,10 @@
         var isLoading = false;
         var pressCount = 0;
         var experience = 100;
+        var mistakes = 0;
 
         async function loadNextQuiz() {
-            if (isLoading || pressCount >= 15) {
+            if (isLoading || pressCount >= 16) {
                 return;
             }
 
@@ -43,16 +51,20 @@
             pressCountLabel.style.display = 'block';
             pressCountLabel.textContent = 'Press count: ' + pressCount + '/15';
 
-            var experienceLable = document.getElementById('experienceLable');
-            experienceLable.textContent = 'You got ' + experience + ' experience from the test';
+            var experienceLabel = document.getElementById('experienceLabel');
+            experienceLabel.textContent = 'You got ' + experience + ' experience from the test';
 
-            if (pressCount === 15) {
-                // Hide quiz container and show final container
+            var mistakesMainLabel = document.getElementById('mistakesMainLabel');
+            mistakesMainLabel.textContent = 'You made ' + mistakes + ' mistakes throughout the test';
+
+            document.getElementById('loadQuizButton').disabled = false;
+
+
+            if (pressCount === 5) {
                 document.getElementById('quizContainer').style.display = 'none';
                 document.getElementById('pressContainer').style.display = 'none';
                 document.getElementById('finalContainer').style.display = 'block';
             } else {
-                // Load the next quiz
                 var quizNumber = Math.floor(Math.random() * 4) + 1;
                 var quizContainer = document.getElementById('quizContainer');
                 quizContainer.innerHTML = '';
@@ -78,19 +90,62 @@
                         var scripts = content.getElementsByTagName('script');
                         for (var i = 0; i < scripts.length; i++) {
                             eval(scripts[i].innerText);
+
+                            if (window.expLoss !== undefined) {
+                                expLoss = window.expLoss;
+                            }
                         }
+                        
+                        // Check buttons on quiz load
+                        checkButtonsLocked();
                     } else {
                         console.error('Failed to fetch quiz content.');
                     }
+
                 } finally {
                     isLoading = false;
                 }
             }
+            
+        }
+
+        function checkButtonsLocked() {
+            var allButtonsLocked = true;
+            var buttons = document.querySelectorAll('#quizContainer button');
+
+            var expLossLabel = document.getElementById('expLossLabel');
+            var expLoss = expLossLabel.textContent;
+            
+            var mistakeLabel = document.getElementById('mistakesLabel');
+            var mistake = mistakeLabel.textContent;
+            //console.log("mistakes before add:", mistakes);
+            //console.log("number of mistakes in current quiz:", mistake);
+            for (var i = 0; i < buttons.length; i++) {
+                if (!buttons[i].disabled) {
+                    allButtonsLocked = false;
+                    break;
+                }
+            }
+            if(allButtonsLocked === true){
+                if(experience > 50){
+                    experience = experience - expLoss;
+                    if(experience < 50){
+                        experience = 50;
+                    }
+                }
+                mistakes += parseInt(mistake);
+                //console.log("mistakes after add:", mistakes);
+            }
+            document.getElementById('loadQuizButton').disabled = !allButtonsLocked;
         }
 
         function redirectToQuiz() {
+            //majd ami ide jön:
+            //
             window.location.href = '/quiz';
         }
+
+        document.getElementById('quizContainer').addEventListener('click', checkButtonsLocked);
     </script>
 </body>
 </html>

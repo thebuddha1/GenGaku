@@ -48,54 +48,82 @@
             </div>
         </div>
     </div>
+    <!------------------------>
+    <div>
+        <label id="expLossLabel"><span id="lostExperienceValue">0</span></label>
+    </div>
+    <div>
+        <label id="mistakesLabel"><span id="mistakesValue">0</span></label>
+    </div>
     <script>
-    const buttons = document.querySelectorAll('.character-button, .sound-button');
-    let previousButton = null;
-    let redButtons = [];
+        var expLoss = 0;
+        var mistakes = 0;
 
-    buttons.forEach(button => {
-        button.addEventListener('click', function() {
-            buttons.forEach(b => {
-                b.classList.remove('red');
-            });
+        const buttons = document.querySelectorAll('.character-button, .sound-button');
+        let previousButton = null;
+        let redButtons = [];
 
-            if (previousButton) {
-                const previousId = previousButton.getAttribute('data-id');
-                const currentId = this.getAttribute('data-id');
-                const previousType = previousButton.classList.contains('character-button') ? 'character' : 'sound';
-                const currentType = this.classList.contains('character-button') ? 'character' : 'sound';
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                buttons.forEach(b => {
+                    b.classList.remove('red');
+                });
 
-                if (redButtons.length === 2) {
-                    buttons.forEach(b => {
-                        b.classList.remove('green');
-                    });
+                if (previousButton) {
+                    const previousId = previousButton.getAttribute('data-id');
+                    const currentId = this.getAttribute('data-id');
+                    const previousType = previousButton.classList.contains('character-button') ? 'character' : 'sound';
+                    const currentType = this.classList.contains('character-button') ? 'character' : 'sound';
 
-                    this.classList.add('green');
-                    previousButton = this;
-                    redButtons.forEach(redButton => {
-                        redButton.classList.remove('red');
-                    });
-                    redButtons = [];
-                } else if (previousId === currentId && previousButton !== this) {
-                    previousButton.classList.add('locked');
-                    this.classList.add('locked');
-                } else if (previousType !== currentType) {
-                    if (!previousButton.classList.contains('locked')) {
-                        previousButton.classList.add('red');
-                        this.classList.add('red');
-                        redButtons.push(previousButton, this);
+                    if (redButtons.length === 2) {
+                        buttons.forEach(b => {
+                            b.classList.remove('green');
+                        });
+
+                        this.classList.add('green');
+                        previousButton = this;
+                        redButtons.forEach(redButton => {
+                            redButton.classList.remove('red');
+                        });
+                        redButtons = [];
+                    } else if (previousId === currentId && previousButton !== this) {
+                        previousButton.classList.add('locked');
+                        this.classList.add('locked');
+                    } else if (previousType !== currentType) {
+                        if (!previousButton.classList.contains('locked')) {
+                            previousButton.classList.add('red');
+                            this.classList.add('red');
+                            redButtons.push(previousButton, this);
+
+                            if(mistakes < 2){
+                                mistakes++;
+                                mistakesLabel.textContent = mistakes;
+                            }
+                            if(expLoss < 30){
+                                expLoss+= 15;
+                                expLossLabel.textContent = expLoss;
+                            }
+                        }
                     }
                 }
-            }
 
-            buttons.forEach(b => {
-                b.classList.remove('green');
+                buttons.forEach(b => {
+                    b.classList.remove('green');
+                });
+
+                this.classList.add('green');
+                previousButton = this;
+
+                // Check if all buttons are locked
+                const lockedButtons = document.querySelectorAll('.locked');
+                if (lockedButtons.length === buttons.length) {
+                    buttons.forEach(b => {
+                        b.disabled = true;
+                    });
+                }
             });
-
-            this.classList.add('green');
-            previousButton = this;
         });
-    });
-</script>
+    </script>
+
 </body>
 </html>
