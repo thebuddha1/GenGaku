@@ -5,19 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Sentence extends Model
+class Word extends Model
 {
     use HasFactory;
 
-    protected $table = 'sentences';
+    protected $table = 'words';
 
     protected $fillable = [
-        'sentence',
-        'sentence_hir',
-        'sentence_rom',
+        'word',
+        'word_hir',
+        'word_rom',
         'meaning',
         'meaning_en',
         'chapter',
         'lesson',
     ];
+
 }
