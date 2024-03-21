@@ -91,7 +91,6 @@
             feedbackDiv.className = 'mismatch-feedback';
         }
     });
-
-</script>
+    </script>
 </body>
 </html>

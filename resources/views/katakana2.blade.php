@@ -13,7 +13,7 @@
 
         .locked {
             pointer-events: none;
-            opacity: 0.6; /* You can adjust the opacity as needed */
+            opacity: 0.6;
             background-color: initial !important;
             color: initial !important;
         }
@@ -48,59 +48,80 @@
             </div>
         </div>
     </div>
+    <!------------------------>
+    <div>
+        <label id="expLossLabel"><span id="lostExperienceValue">0</span></label>
+    </div>
+    <div>
+        <label id="mistakesLabel"><span id="mistakesValue">0</span></label>
+    </div>
     <script>
-    const buttons = document.querySelectorAll('.character-button, .sound-button');
-    let previousButton = null;
-    let redButtons = [];
+        var expLoss = 0;
+        var mistakes = 0;
+        
+        const buttons = document.querySelectorAll('.character-button, .sound-button');
+        let previousButton = null;
+        let redButtons = [];
 
-    buttons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Remove red color from all buttons
-            buttons.forEach(b => {
-                b.classList.remove('red');
-            });
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                buttons.forEach(b => {
+                    b.classList.remove('red');
+                });
 
-            if (previousButton) {
-                const previousId = previousButton.getAttribute('data-id');
-                const currentId = this.getAttribute('data-id');
-                const previousType = previousButton.classList.contains('character-button') ? 'character' : 'sound';
-                const currentType = this.classList.contains('character-button') ? 'character' : 'sound';
+                if (previousButton) {
+                    const previousId = previousButton.getAttribute('data-id');
+                    const currentId = this.getAttribute('data-id');
+                    const previousType = previousButton.classList.contains('character-button') ? 'character' : 'sound';
+                    const currentType = this.classList.contains('character-button') ? 'character' : 'sound';
 
-                if (redButtons.length === 2) {
-                    // Two non-matching buttons were pressed before
-                    // Ignore other logic and turn the pressed button green
-                    buttons.forEach(b => {
-                        b.classList.remove('green');
-                    });
+                    if (redButtons.length === 2) {
+                        buttons.forEach(b => {
+                            b.classList.remove('green');
+                        });
 
-                    this.classList.add('green');
-                    previousButton = this;
-                    redButtons.forEach(redButton => {
-                        redButton.classList.remove('red');
-                    });
-                    redButtons = [];
-                } else if (previousId === currentId && previousButton !== this) {
-                    // Lock both buttons if they are from the same record
-                    previousButton.classList.add('locked');
-                    this.classList.add('locked');
-                } else if (previousType !== currentType) {
-                    // Additional condition: Buttons are from different rows
-                    if (!previousButton.classList.contains('locked')) {
-                        previousButton.classList.add('red');
-                        this.classList.add('red');
-                        redButtons.push(previousButton, this);
+                        this.classList.add('green');
+                        previousButton = this;
+                        redButtons.forEach(redButton => {
+                            redButton.classList.remove('red');
+                        });
+                        redButtons = [];
+                    } else if (previousId === currentId && previousButton !== this) {
+                        previousButton.classList.add('locked');
+                        this.classList.add('locked');
+                    } else if (previousType !== currentType) {
+                        if (!previousButton.classList.contains('locked')) {
+                            previousButton.classList.add('red');
+                            this.classList.add('red');
+                            redButtons.push(previousButton, this);
+
+                            if(mistakes < 2){
+                                mistakes++;
+                                mistakesLabel.textContent = mistakes;
+                            }
+                            if(expLoss < 30){
+                                expLoss+= 15;
+                                expLossLabel.textContent = expLoss;
+                            }
+                        }
                     }
                 }
-            }
 
-            buttons.forEach(b => {
-                b.classList.remove('green');
+                buttons.forEach(b => {
+                    b.classList.remove('green');
+                });
+
+                this.classList.add('green');
+                previousButton = this;
+
+                const lockedButtons = document.querySelectorAll('.locked');
+                if (lockedButtons.length === buttons.length) {
+                    buttons.forEach(b => {
+                        b.disabled = true;
+                    });
+                }
             });
-
-            this.classList.add('green');
-            previousButton = this;
         });
-    });
-</script>
+    </script>
 </body>
 </html>

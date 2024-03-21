@@ -13,7 +13,7 @@
 
         .locked {
             pointer-events: none;
-            opacity: 0.6; /* You can adjust the opacity as needed */
+            opacity: 0.6;
             background-color: initial !important;
             color: initial !important;
         }
@@ -114,7 +114,6 @@
                 this.classList.add('green');
                 previousButton = this;
 
-                // Check if all buttons are locked
                 const lockedButtons = document.querySelectorAll('.locked');
                 if (lockedButtons.length === buttons.length) {
                     buttons.forEach(b => {
@@ -124,6 +123,5 @@
             });
         });
     </script>
-
 </body>
 </html>
