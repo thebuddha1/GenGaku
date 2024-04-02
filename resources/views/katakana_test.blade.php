@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Document</title>
 </head>
 <body>
-    <div>
+    <div id="pressContainer">
         <label id="pressCountLabel" style="display:none;">Press count: 0/15</label>
         <button onclick="loadNextQuiz()" id="loadQuizButton">Next</button>
     </div>
@@ -64,6 +65,30 @@
                 document.getElementById('quizContainer').style.display = 'none';
                 document.getElementById('pressContainer').style.display = 'none';
                 document.getElementById('finalContainer').style.display = 'block';
+                console.log(experience);
+                
+                //nem működik
+                fetch('/update-user-experience', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    },
+                    body: JSON.stringify({ experience: experience })
+                    
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to update user experience');
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+                //majd ami ide jön:
+                //xp hozzáadása a fiókhoz
+                //ha a hibák száma kisebb, egyenlő mint 5 és a leckeszám amivel el lett indítva a kvíz egyenlő a fiókon tárolt leckével +1 az elvégzett tesztek számához
+                //ha az elvégzett tesztek száma =6 +1 a leckékhez és a tesztek 
             } else {
                 var quizNumber = Math.floor(Math.random() * 4) + 1;
                 var quizContainer = document.getElementById('quizContainer');
@@ -76,7 +101,7 @@
                     } else if (quizNumber === 2) {
                         response = await fetch('/katakana2');
                     } else if (quizNumber === 3) {
-                        response = await fetch('/katakanak3');
+                        response = await fetch('/katakana3');
                     } else if (quizNumber === 4) {
                         response = await fetch('/katakana4');
                     }
@@ -140,9 +165,7 @@
         }
 
         function redirectToQuiz() {
-            //majd ami ide jön:
-            //
-            window.location.href = '/quiz-kat';
+            window.location.href = '/katakana-course';
         }
 
         document.getElementById('quizContainer').addEventListener('click', checkButtonsLocked);

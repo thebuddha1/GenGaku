@@ -13,6 +13,8 @@ use App\Http\Controllers\MainCourseController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::post('/update-experience', 'WritingCourseController@updateExperience')->name('update.experience');
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -36,6 +38,8 @@ Route::middleware([
     Route::get('/katakana2', [WritingCourseController::class, 'katakanaTest2']);
     Route::get('/katakana3', [WritingCourseController::class, 'katakanaTest3']);
     Route::get('/katakana4', [WritingCourseController::class, 'katakanaTest4']);
+    //kvízek - főkurzus
+    Route::get('/word1', [MainCourseController::class, 'wordTest1']);
     //íráskurzus tesztek
     Route::get('/quiz', function () {
         return view('hiragana_test');
@@ -44,6 +48,14 @@ Route::middleware([
     Route::get('/quiz-kat', function () {
         return view('katakana_test');
     });
+    //íráskurzusok
+    Route::get('/hiragana-course', function () {
+        return view('courses\hiragana_course');
+    });
+    Route::get('/katakana-course', function () {
+        return view('courses\katakana_course');
+    });
+
     //menüpontok
     Route::view('/maincourse-start', 'courses/maincourse-start')->name('courses/maincourse.start');
     Route::view('/writingcourse-start', 'courses/writingcourse-start')->name('courses/writingcourse.start');
@@ -51,4 +63,7 @@ Route::middleware([
     Route::view('/groups', 'socials/groupsmain')->name('socials/groupsmain');
     Route::view('/recommendations', 'recommendations')->name('recommendations');
 
+
+    //
+    //Route::post('/update-user-experience', 'WritingCourseController@updateUserExperience');
 });

@@ -64,6 +64,25 @@
                 document.getElementById('quizContainer').style.display = 'none';
                 document.getElementById('pressContainer').style.display = 'none';
                 document.getElementById('finalContainer').style.display = 'block';
+                
+                try {
+                    const response = await fetch('/update-experience', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify({ experience: experience })
+                    });
+
+                    if (response.ok) {
+                        console.log('Experience updated successfully.');
+                    } else {
+                        console.error('Failed to update experience.');
+                    }
+                } catch (error) {
+                    console.error('Error updating experience:', error);
+                }
             } else {
                 var quizNumber = Math.floor(Math.random() * 4) + 1;
                 var quizContainer = document.getElementById('quizContainer');
@@ -140,9 +159,7 @@
         }
 
         function redirectToQuiz() {
-            //majd ami ide jön:
-            //
-            window.location.href = '/quiz';
+            window.location.href = '/hiragana-course';
         }
 
         document.getElementById('quizContainer').addEventListener('click', checkButtonsLocked);

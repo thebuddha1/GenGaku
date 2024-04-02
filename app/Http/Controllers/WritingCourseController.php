@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Hiragana;
 use App\Models\Katakana;
+use App\Models\ProfileStatistic;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 
 class WritingCourseController extends Controller
@@ -213,4 +216,55 @@ class WritingCourseController extends Controller
             'characterLabelContent' => $characterLabelContent,
         ]);
     }
+
+    //______________________________
+    public function updateUserExperience(Request $request)
+    {
+        try {
+            // Check if user is authenticated
+            if (!Auth::check()) {
+                throw new \Exception('User not authenticated');
+            }
+
+            // Retrieve the user's ID
+            $userId = Auth::id();
+
+            // Retrieve the user's statistics
+            $userStatistics = ProfileStatistic::where('user_id', $userId)->first();
+
+            // Check if user statistics exist
+            if (!$userStatistics) {
+                throw new \Exception('User statistics not found');
+            }
+
+            // Update the experience
+            $experienceToAdd = $request->input('experience');
+            $userStatistics->experience += $experienceToAdd;
+            $userStatistics->save();
+
+            // Return success response
+            return response()->json(['success' => true]);
+        } catch (\Exception $e) {
+            // Log the error
+            Log::error('Failed to update user experience: ' . $e->getMessage());
+            
+            // Return error response
+            return response()->json(['error' => 'Failed to update user experience'], 500);
+        }
+    }
+
+    public function updateExperience(Request $request)
+    {
+        // Get the currently logged-in user's ID
+        $userId = auth()->user()->id;
+        
+        // Get the experience value from the request
+        $experience = $request->input('experience');
+        
+        // Update the experience for the user
+        ProfileStatistics::where('user_id', $userId)->update(['experience' => $experience]);
+        
+        return response()->json(['success' => true]);
+    }
+
 }
