@@ -54,7 +54,7 @@ class MainCourseController extends Controller
 
     public function wordTest2()
     {
-        $randomWords = Wrod::where('lesson', 1)
+        $randomWords = Word::where('lesson', 1)
             ->where('chapter', 1)
             ->inRandomOrder()
             ->limit(5)
@@ -63,8 +63,10 @@ class MainCourseController extends Controller
         $wordData = [];
         foreach ($randomWords as $word) {
             $wordData[] = [
-                'id' => $words->id,
+                'id' => $word->id,
                 'word' => $word->word,
+                'word_hir' => $word->word_hir,
+                'word_rom' => $word->word_rom,
                 'meaning' => $word->meaning_en,
             ];
         }

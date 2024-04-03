@@ -40,6 +40,7 @@ Route::middleware([
     Route::get('/katakana4', [WritingCourseController::class, 'katakanaTest4']);
     //kvízek - főkurzus
     Route::get('/word1', [MainCourseController::class, 'wordTest1']);
+    Route::get('/word2', [MainCourseController::class, 'wordTest2']);
     //íráskurzus tesztek
     Route::get('/quiz', function () {
         return view('hiragana_test');
