@@ -20,6 +20,9 @@ class DeleteUser implements DeletesUsers
         if ($user->profileProgression) {
             $user->profileProgression->delete();
         }
+        if ($user->profileSettings) {
+            $user->profileSettings->delete();
+        }
         $user->delete();
     }
 }

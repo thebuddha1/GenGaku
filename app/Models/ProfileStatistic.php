@@ -15,7 +15,7 @@ class ProfileStatistic extends Model
         'streak',
         'last_login',
         'logged_in_today',
-        'highest_rank',
+        'finished_tests'
     ];
 
     public function user()
@@ -33,5 +33,6 @@ class ProfileStatistic extends Model
         $this->attributes['last_login'] = now();
         $this->attributes['logged_in_today'] = true;
         $this->attributes['highest_rank'] = 0;
+        $this->attributes['finished_tests'] = 0;
     }
 }

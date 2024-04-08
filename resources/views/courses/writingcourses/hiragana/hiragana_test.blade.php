@@ -6,40 +6,63 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="pressContainer">
-        <label id="pressCountLabel" style="display:none;">Press count: 0/15</label>
-        <button onclick="loadNextQuiz()" id="loadQuizButton">Next</button>
-    </div>
-    <div>
-        <label id="experienceLabel">your experience: </label>
-    </div>
-    <div>
-        <label id="mistakesMainLabel">your mistakes: </label>
-    </div>
     <div id="quizContainer">
         <h1>
             Press the next button to start the quiz
         </h1>
+    </div>
+    <div id="pressContainer">
+        <label id="pressCountLabel" style="display:none;">Press count: 0/15</label>
+        <button onclick="loadNextQuiz()" id="loadQuizButton">Next</button>
     </div>
 
     <div id="finalContainer" style="display:none;">
         <h1>
             Congratulations! You've completed 15 quizzes.
         </h1>
-        <label id="experienceLabel">your experience: </label>
-        <label id="mistakesMainLabel">your mistakes: </label>
         <div>
-            <button onclick="redirectToQuiz()">Go to Quiz</button>
+            <label id="experienceLabel">your experience: </label>
+        </div>
+        <div>
+            <label id="mistakesMainLabel">your mistakes: </label>
+        </div>
+        <div>
+            <form action="{{ route('save-prog-hir') }}" method="POST">
+                @csrf
+                <input type="hidden" id="experienceInput" name="experience" value="100">
+                <input type="hidden" id="testProgressInput" name="testprog" value="1">
+                <h5>Press the button below to save your progress and go back to the lessons</h5>
+                <button type="submit">Back to lessons</button>
+            </form>
         </div>
     </div>
 
     <script>
+        //_______________________________________
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+        var lesson = getParameterByName('lesson');
+        //______________________________________________
         var isLoading = false;
         var pressCount = 0;
         var experience = 100;
         var mistakes = 0;
+        var testprogress = 1;
 
         async function loadNextQuiz() {
+            document.getElementById('experienceInput').value = experience;
+            if(mistakes > 2){
+                testprogress = 0;
+            }
+            document.getElementById('testProgressInput').value = testprogress;
+
             if (isLoading || pressCount >= 16) {
                 return;
             }
@@ -64,40 +87,22 @@
                 document.getElementById('quizContainer').style.display = 'none';
                 document.getElementById('pressContainer').style.display = 'none';
                 document.getElementById('finalContainer').style.display = 'block';
-                
-                try {
-                    const response = await fetch('/update-experience', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                        },
-                        body: JSON.stringify({ experience: experience })
-                    });
-
-                    if (response.ok) {
-                        console.log('Experience updated successfully.');
-                    } else {
-                        console.error('Failed to update experience.');
-                    }
-                } catch (error) {
-                    console.error('Error updating experience:', error);
-                }
             } else {
                 var quizNumber = Math.floor(Math.random() * 4) + 1;
                 var quizContainer = document.getElementById('quizContainer');
                 quizContainer.innerHTML = '';
 
                 try {
+                    //var num = parseInt(window.location.pathname.split('/').pop());
                     var response;
                     if (quizNumber === 1) {
-                        response = await fetch('/hiragana1');
+                        response = await fetch('/hiragana1/' + lesson);
                     } else if (quizNumber === 2) {
-                        response = await fetch('/hiragana2');
+                        response = await fetch('/hiragana2/' + lesson);
                     } else if (quizNumber === 3) {
-                        response = await fetch('/hiragana3');
+                        response = await fetch('/hiragana3/' + lesson);
                     } else if (quizNumber === 4) {
-                        response = await fetch('/hiragana4');
+                        response = await fetch('/hiragana4/' + lesson);
                     }
 
                     if (response.ok) {
@@ -157,11 +162,6 @@
             }
             document.getElementById('loadQuizButton').disabled = !allButtonsLocked;
         }
-
-        function redirectToQuiz() {
-            window.location.href = '/hiragana-course';
-        }
-
         document.getElementById('quizContainer').addEventListener('click', checkButtonsLocked);
     </script>
 </body>

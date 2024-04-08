@@ -39,6 +39,7 @@ class CreateNewUser implements CreatesNewUsers
             'last_login' => now(),
             'logged_in_today' => true,
             'highest_rank' => 0,
+            'finished_tests' => 0,
         ]);
 
         $user->profileProgression()->create([
@@ -47,7 +48,8 @@ class CreateNewUser implements CreatesNewUsers
             'fnshd_tsts' => 0,
             'cur_hrgn' => 1,
             'cur_ktkn' => 1,
-            'cur_fnshd_tsts' => 0,
+            'fnshd_tsts_hir' => 0,
+            'fnshd_tsts_kat' => 0,
         ]);
 
         $user->profileSettings()->create([

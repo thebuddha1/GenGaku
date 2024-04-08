@@ -16,7 +16,8 @@ class ProfileProgression extends Model
         'fnshd_tsts',
         'cur_hrgn',
         'cur_ktkn',
-        'cur_fnshd_tsts'
+        'fnshd_tsts_hir',
+        'fnshd_tsts_kat'
     ];
 
     // Define the relationship to the User model

@@ -25,7 +25,7 @@
             <label style="font-size: 20px;">{{ $labelContent }}</label>
         </div>
         <div style="margin-bottom: 10px;">
-            <label class="invisible" id="soundLabel" style="font-size: 20px;">{{ $soundLabelContent }}</label>
+            <label class="invisible" id="soundLabel" style="font-size: 20px;">{{ $characterLabelContent }}</label>
         </div>
         <div style="margin-bottom: 10px;">
             <input type="text" id="katakanaInput" name="katakanaInput">
@@ -47,10 +47,10 @@
 
         <!------------------------>
     <div>
-    <label id="expLossLabel"><span id="lostExperienceValue">0</span></label>
+        <label class="invisible" id="expLossLabel"><span id="lostExperienceValue">0</span></label>
     </div>
     <div>
-        <label id="mistakesLabel"><span id="mistakesValue">0</span></label>
+        <label class="invisible" id="mistakesLabel"><span id="mistakesValue">0</span></label>
     </div>
 
     <script>
@@ -81,9 +81,11 @@
         });
 
         checkButton.addEventListener('click', function () {
-            disableButtons(); // Disable buttons on check
+            disableButtons();
+            var textBoxValue = textBox.value.trim();
+            var soundLabelText = soundLabel.textContent.trim();
 
-            if (textBox.value === soundLabel.textContent) {
+            if (textBoxValue === soundLabelText) {
                 feedbackDiv.textContent = 'Match!';
                 feedbackDiv.className = 'match-feedback';
             } else {

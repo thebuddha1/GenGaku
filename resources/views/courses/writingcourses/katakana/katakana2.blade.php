@@ -6,6 +6,9 @@
     <title>Document</title>
 
     <style>
+        .invisible {
+            display: none;
+        }
         .green {
             background-color: green;
             color: white;
@@ -29,43 +32,37 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h2>Words</h2>
+                <h2>Characters</h2>
                 @php
-                    shuffle($wordData);
+                    shuffle($characterData);
                 @endphp
-                @foreach ($wordData as $word)
-                    @if (auth()->user()->profileSettings->kanji)
-                        <button class="word-button" data-id="{{ $word['id'] }}">{{ $word['word'] }}</button>
-                    @elseif (auth()->user()->profileSettings->hiragana)
-                        <button class="word-button" data-id="{{ $word['id'] }}">{{ $word['word_hir'] }}</button>
-                    @elseif (auth()->user()->profileSettings->romanji)
-                        <button class="word-button" data-id="{{ $word['id'] }}">{{ $word['word_rom'] }}</button>
-                    @endif
+                @foreach ($characterData as $character)
+                    <button class="character-button" data-id="{{ $character['id'] }}">{{ $character['character'] }}</button>
                 @endforeach
             </div>
             <div class="col-md-6">
-                <h2>Englis words</h2>
+                <h2>Sounds</h2>
                 @php
-                    shuffle($wordData);
+                    shuffle($characterData);
                 @endphp
-                @foreach ($wordData as $word)
-                    <button class="meaning-button" data-id="{{ $word['id'] }}">{{ $word['meaning'] }}</button>
+                @foreach ($characterData as $character)
+                    <button class="sound-button" data-id="{{ $character['id'] }}">{{ $character['sound'] }}</button>
                 @endforeach
             </div>
         </div>
     </div>
     <!------------------------>
     <div>
-        <label id="expLossLabel"><span id="lostExperienceValue">0</span></label>
+        <label class="invisible" id="expLossLabel"><span id="lostExperienceValue">0</span></label>
     </div>
     <div>
-        <label id="mistakesLabel"><span id="mistakesValue">0</span></label>
+        <label class="invisible" id="mistakesLabel"><span id="mistakesValue">0</span></label>
     </div>
     <script>
         var expLoss = 0;
         var mistakes = 0;
-
-        const buttons = document.querySelectorAll('.word-button, .meaning-button');
+        
+        const buttons = document.querySelectorAll('.character-button, .sound-button');
         let previousButton = null;
         let redButtons = [];
 
@@ -78,8 +75,8 @@
                 if (previousButton) {
                     const previousId = previousButton.getAttribute('data-id');
                     const currentId = this.getAttribute('data-id');
-                    const previousType = previousButton.classList.contains('word-button') ? 'word' : 'meaning_en';
-                    const currentType = this.classList.contains('word-button') ? 'word' : 'meaning_en';
+                    const previousType = previousButton.classList.contains('character-button') ? 'character' : 'sound';
+                    const currentType = this.classList.contains('character-button') ? 'character' : 'sound';
 
                     if (redButtons.length === 2) {
                         buttons.forEach(b => {

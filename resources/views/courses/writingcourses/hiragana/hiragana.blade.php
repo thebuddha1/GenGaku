@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hiragana Test</title>
     <style>
+        .invisible {
+            display: none;
+        }
         .highlight {
             background-color: yellow;
         }
@@ -32,10 +35,10 @@
 
         <!------------------------>
     <div>
-        <label id="expLossLabel"><span id="lostExperienceValue">0</span></label>
+        <label class="invisible" id="expLossLabel"><span id="lostExperienceValue">0</span></label>
     </div>
     <div>
-        <label id="mistakesLabel"><span id="mistakesValue">0</span></label>
+        <label class="invisible" id="mistakesLabel"><span id="mistakesValue">0</span></label>
     </div>
 
     <script>

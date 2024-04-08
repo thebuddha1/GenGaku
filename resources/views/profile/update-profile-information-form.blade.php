@@ -92,42 +92,50 @@
             <x-label for="streak" value="{{ __('Streak') }}" />
             <p>{{ auth()->user()->profileStatistic->streak }}</p>
         </div>
-        <!-- Highest Rank -->
+       
         <div class="col-span-6 sm:col-span-4">
-            <x-label for="highest_rank" value="{{ __('Highest rank') }}" />
-            <p>{{ auth()->user()->profileStatistic->highest_rank }}</p>
+            <x-label for="fnshd_tsts" value="{{ __('Succesfuly finished tests across all the courses') }}" />
+            <p>{{ auth()->user()->profileStatistic->finished_tests }}</p>
         </div>
-
-        <!-- Chapter -->
+            
         <div class="col-span-6 sm:col-span-4">
             <x-label for="cur_chpt" value="{{ __('Current chapter') }}" />
             <p>{{ auth()->user()->profileProgression->cur_chpt }}</p>
         </div>
 
-        <!-- Lesson -->
+        
         <div class="col-span-6 sm:col-span-4">
             <x-label for="cur_lsn" value="{{ __('Current lesson') }}" />
             <p>{{ auth()->user()->profileProgression->cur_lsn }}</p>
         </div>
 
-        <!-- Hiragana Chapter -->
+        
         <div class="col-span-6 sm:col-span-4">
-            <x-label for="cur_hrgn" value="{{ __('Current chapter (hiragana)') }}" />
+            <x-label for="cur_hrgn" value="{{ __('Current Lesson (hiragana)') }}" />
             <p>{{ auth()->user()->profileProgression->cur_hrgn }}</p>
         </div>
         
-        <!-- Katakana Chapter -->
+        
         <div class="col-span-6 sm:col-span-4">
-            <x-label for="cur_ktkn" value="{{ __('Current chapter (katakana)') }}" />
+            <x-label for="cur_ktkn" value="{{ __('Current lesson (katakana)') }}" />
             <p>{{ auth()->user()->profileProgression->cur_ktkn }}</p>
         </div>
         
-        <!-- Finished test -->
         <div class="col-span-6 sm:col-span-4">
-            <x-label for="fnshd_tsts" value="{{ __('Finished tests') }}" />
+            <x-label for="cur_ktkn" value="{{ __('Finished tests in current lesson') }}" />
             <p>{{ auth()->user()->profileProgression->fnshd_tsts }}</p>
         </div>
 
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="cur_ktkn" value="{{ __('Finished tests in current lesson(hiragana)') }}" />
+            <p>{{ auth()->user()->profileProgression->fnshd_tsts_hir }}</p>
+        </div>
+
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="cur_ktkn" value="{{ __('Finished tests in current lesson(katakana)') }}" />
+            <p>{{ auth()->user()->profileProgression->fnshd_tsts_kat }}</p>
+        </div>
+        
 
 
     </x-slot>

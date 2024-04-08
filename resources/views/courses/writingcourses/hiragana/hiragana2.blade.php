@@ -6,6 +6,9 @@
     <title>Document</title>
 
     <style>
+        .invisible {
+            display: none;
+        }
         .green {
             background-color: green;
             color: white;
@@ -50,10 +53,10 @@
     </div>
     <!------------------------>
     <div>
-        <label id="expLossLabel"><span id="lostExperienceValue">0</span></label>
+        <label class="invisible" id="expLossLabel"><span id="lostExperienceValue">0</span></label>
     </div>
     <div>
-        <label id="mistakesLabel"><span id="mistakesValue">0</span></label>
+        <label class="invisible" id="mistakesLabel"><span id="mistakesValue">0</span></label>
     </div>
     <script>
         var expLoss = 0;

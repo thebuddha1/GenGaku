@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Hiragana;
 use App\Models\Katakana;
 use App\Models\ProfileStatistic;
+use App\Models\ProfileProgression;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -14,12 +15,12 @@ use Illuminate\Support\Facades\Log;
 class WritingCourseController extends Controller
 {
     //hiragana
-    public function hiraganaTest1()
+    public function hiraganaTest1($num)
     {
 
-        $hiragana = Hiragana::where('lesson', 1)->inRandomOrder()->first();
+        $hiragana = Hiragana::where('lesson', $num)->inRandomOrder()->first();
 
-        $randomSounds = Hiragana::where('lesson', 1)
+        $randomSounds = Hiragana::where('lesson', $num)
             ->where('sound', '!=', $hiragana->sound)
             ->inRandomOrder()
             ->limit(3)
@@ -30,15 +31,15 @@ class WritingCourseController extends Controller
 
         shuffle($randomSounds);
 
-        return view('hiragana', [
+        return view('courses\writingcourses\hiragana\hiragana', [
             'hiragana' => $hiragana,
             'randomSounds' => $randomSounds,
         ]);
     }
 
-    public function hiraganaTest2()
+    public function hiraganaTest2($num)
     {
-        $randomCharacters = Hiragana::where('lesson', 1)->inRandomOrder()->limit(5)->get();
+        $randomCharacters = Hiragana::where('lesson', $num)->inRandomOrder()->limit(5)->get();
         
         $characterData = [];
         foreach ($randomCharacters as $character) {
@@ -49,12 +50,12 @@ class WritingCourseController extends Controller
             ];
         }
 
-        return view('hiragana2', compact('characterData'));
+        return view('courses\writingcourses\hiragana\hiragana2', compact('characterData'));
     }
 
-    public function hiraganaTest3()
+    public function hiraganaTest3($num)
     {
-        $selectedHiraganaRows = Hiragana::where('lesson', 1)
+        $selectedHiraganaRows = Hiragana::where('lesson', $num)
                                         ->inRandomOrder()
                                         ->limit(rand(3, 5))
                                         ->get();
@@ -62,7 +63,7 @@ class WritingCourseController extends Controller
         $randomHiragana = $selectedHiraganaRows->pluck('character')->toArray();
         $selectedSounds = $selectedHiraganaRows->pluck('sound')->toArray();
 
-        $additionalSounds = Hiragana::where('lesson', 1)
+        $additionalSounds = Hiragana::where('lesson', $num)
                                     ->whereNotIn('sound', $selectedSounds)
                                     ->inRandomOrder()
                                     ->limit(10 - count($selectedSounds))
@@ -76,16 +77,16 @@ class WritingCourseController extends Controller
         $labelContent = implode('', $randomHiragana);
         $soundLabelContent = implode('', $selectedSounds);
 
-        return view('hiragana3', [
+        return view('courses\writingcourses\hiragana\hiragana3', [
             'labelContent' => $labelContent,
             'buttonContent' => $buttonContent,
             'soundLabelContent' => $soundLabelContent,
         ]);
     }
 
-    public function hiraganaTest4()
+    public function hiraganaTest4($num)
     {
-        $selectedHiraganaRows = Hiragana::where('lesson', 1)
+        $selectedHiraganaRows = Hiragana::where('lesson', $num)
                                         ->inRandomOrder()
                                         ->limit(rand(3, 5))
                                         ->get();
@@ -94,7 +95,7 @@ class WritingCourseController extends Controller
         $randomSounds = $selectedHiraganaRows->pluck('sound')->toArray();
         $selectedHiragana = $selectedHiraganaRows->pluck('character')->toArray();
 
-        $additionalHiragana = Hiragana::where('lesson', 1)
+        $additionalHiragana = Hiragana::where('lesson', $num)
                                     ->whereNotIn('character', $selectedHiragana)
                                     ->inRandomOrder()
                                     ->limit(10 - count($selectedHiragana))
@@ -108,7 +109,7 @@ class WritingCourseController extends Controller
         $labelContent = implode('', $randomSounds);
         $characterLabelContent = implode('', $selectedHiragana);
 
-        return view('hiragana4', [
+        return view('courses\writingcourses\hiragana\hiragana4', [
             'labelContent' => $labelContent,
             'buttonContent' => $buttonContent,
             'characterLabelContent' => $characterLabelContent,
@@ -116,12 +117,12 @@ class WritingCourseController extends Controller
     }
     //katakana
     //________________________________________________________________________
-    public function katakanaTest1()
+    public function katakanaTest1($num)
     {
 
-        $katakana = Katakana::where('lesson', 1)->inRandomOrder()->first();
+        $katakana = Katakana::where('lesson', $num)->inRandomOrder()->first();
 
-        $randomSounds = Katakana::where('lesson', 1)
+        $randomSounds = Katakana::where('lesson', $num)
             ->where('sound', '!=', $katakana->sound)
             ->inRandomOrder()
             ->limit(3)
@@ -132,15 +133,15 @@ class WritingCourseController extends Controller
 
         shuffle($randomSounds);
 
-        return view('katakana', [
+        return view('courses\writingcourses\katakana\katakana', [
             'katakana' => $katakana,
             'randomSounds' => $randomSounds,
         ]);
     }
 
-    public function katakanaTest2()
+    public function katakanaTest2($num)
     {
-        $randomCharacters = Katakana::where('lesson', 1)->inRandomOrder()->limit(5)->get();
+        $randomCharacters = Katakana::where('lesson', $num)->inRandomOrder()->limit(5)->get();
         
         $characterData = [];
         foreach ($randomCharacters as $character) {
@@ -151,12 +152,12 @@ class WritingCourseController extends Controller
             ];
         }
 
-        return view('katakana2', compact('characterData'));
+        return view('courses\writingcourses\katakana\katakana2', compact('characterData'));
     }
 
-    public function katakanaTest3()
+    public function katakanaTest3($num)
     {
-        $selectedKatakanaRows = Katakana::where('lesson', 1)
+        $selectedKatakanaRows = Katakana::where('lesson', $num)
                                         ->inRandomOrder()
                                         ->limit(rand(3, 5))
                                         ->get();
@@ -164,7 +165,7 @@ class WritingCourseController extends Controller
         $randomKatakana = $selectedKatakanaRows->pluck('character')->toArray();
         $selectedSounds = $selectedKatakanaRows->pluck('sound')->toArray();
 
-        $additionalSounds = Katakana::where('lesson', 1)
+        $additionalSounds = Katakana::where('lesson', $num)
                                     ->whereNotIn('sound', $selectedSounds)
                                     ->inRandomOrder()
                                     ->limit(10 - count($selectedSounds))
@@ -178,16 +179,16 @@ class WritingCourseController extends Controller
         $labelContent = implode('', $randomKatakana);
         $soundLabelContent = implode('', $selectedSounds);
 
-        return view('katakana3', [
+        return view('courses\writingcourses\katakana\katakana3', [
             'labelContent' => $labelContent,
             'buttonContent' => $buttonContent,
             'soundLabelContent' => $soundLabelContent,
         ]);
     }
 
-    public function katakanaTest4()
+    public function katakanaTest4($num)
     {
-        $selectedKatakanaRows = Katakana::where('lesson', 1)
+        $selectedKatakanaRows = Katakana::where('lesson', $num)
                                         ->inRandomOrder()
                                         ->limit(rand(3, 5))
                                         ->get();
@@ -196,7 +197,7 @@ class WritingCourseController extends Controller
         $randomSounds = $selectedKatakanaRows->pluck('sound')->toArray();
         $selectedKatakana = $selectedKatakanaRows->pluck('character')->toArray();
 
-        $additionalKatakana = Katakana::where('lesson', 1)
+        $additionalKatakana = Katakana::where('lesson', $num)
                                     ->whereNotIn('character', $selectedKatakana)
                                     ->inRandomOrder()
                                     ->limit(10 - count($selectedKatakana))
@@ -210,7 +211,7 @@ class WritingCourseController extends Controller
         $labelContent = implode('', $randomSounds);
         $characterLabelContent = implode('', $selectedKatakana);
 
-        return view('katakana4', [
+        return view('courses\writingcourses\katakana\katakana4', [
             'labelContent' => $labelContent,
             'buttonContent' => $buttonContent,
             'characterLabelContent' => $characterLabelContent,
@@ -218,53 +219,68 @@ class WritingCourseController extends Controller
     }
 
     //______________________________
-    public function updateUserExperience(Request $request)
+    public function saveProgressHir(Request $request)
     {
-        try {
-            // Check if user is authenticated
-            if (!Auth::check()) {
-                throw new \Exception('User not authenticated');
+        $userId = auth()->id();
+        
+        $profileStat = ProfileStatistic::where('user_id', $userId)->first();
+
+        if ($profileStat) {
+            $experience = $request->input('experience');
+            $profileStat->experience += $experience;
+            $profileStat->finished_tests += $request->input('testprog');
+            $profileStat->save();
+        } else {
+            return redirect('/hiragana-course')->with('error', 'Something went wrong finding the ProfileStatistics');
+        }
+
+        $profileProgress = ProfileProgression::where('user_id', $userId)->first();
+
+        if ($profileProgress) {
+            $testProgress = $request->input('testprog');
+            $profileProgress->fnshd_tsts_hir += $testProgress;
+            if ($profileProgress->fnshd_tsts_hir >= 6) {
+                $profileProgress->fnshd_tsts_hir = 0;
+                $profileProgress->cur_hrgn += 1;
             }
+            $profileProgress->save();
 
-            // Retrieve the user's ID
-            $userId = Auth::id();
-
-            // Retrieve the user's statistics
-            $userStatistics = ProfileStatistic::where('user_id', $userId)->first();
-
-            // Check if user statistics exist
-            if (!$userStatistics) {
-                throw new \Exception('User statistics not found');
-            }
-
-            // Update the experience
-            $experienceToAdd = $request->input('experience');
-            $userStatistics->experience += $experienceToAdd;
-            $userStatistics->save();
-
-            // Return success response
-            return response()->json(['success' => true]);
-        } catch (\Exception $e) {
-            // Log the error
-            Log::error('Failed to update user experience: ' . $e->getMessage());
-            
-            // Return error response
-            return response()->json(['error' => 'Failed to update user experience'], 500);
+            return redirect('/hiragana-course')->with('success', 'Progress saved successfully');
+        } else {
+            return redirect('/hiragana-course')->with('error', 'Something went wrong finding the ProfileProgression');
         }
     }
 
-    public function updateExperience(Request $request)
+    public function saveProgressKat(Request $request)
     {
-        // Get the currently logged-in user's ID
-        $userId = auth()->user()->id;
+        $userId = auth()->id();
         
-        // Get the experience value from the request
-        $experience = $request->input('experience');
-        
-        // Update the experience for the user
-        ProfileStatistics::where('user_id', $userId)->update(['experience' => $experience]);
-        
-        return response()->json(['success' => true]);
+        $profileStat = ProfileStatistic::where('user_id', $userId)->first();
+
+        if ($profileStat) {
+            $experience = $request->input('experience');
+            $profileStat->experience += $experience;
+            $profileStat->finished_tests += $request->input('testprog');
+            $profileStat->save();
+        } else {
+            return redirect('/hiragana-course')->with('error', 'Something went wrong finding the ProfileStatistics');
+        }
+
+        $profileProgress = ProfileProgression::where('user_id', $userId)->first();
+
+        if ($profileProgress) {
+            $testProgress = $request->input('testprog');
+            $profileProgress->fnshd_tsts_kat += $testProgress;
+            if ($profileProgress->fnshd_tsts_kat >= 6) {
+                $profileProgress->fnshd_tsts_kat = 0;
+                $profileProgress->cur_ktkn += 1;
+            }
+            $profileProgress->save();
+
+            return redirect('/katakana-course')->with('success', 'Progress saved successfully');
+        } else {
+            return redirect('/katakana-course')->with('error', 'Something went wrong finding the ProfileProgression');
+        }
     }
 
 }
