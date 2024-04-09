@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WritingCourseController;
 use App\Http\Controllers\MainCourseController;
+use App\Http\Controllers\GroupsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -63,12 +64,22 @@ Route::middleware([
     Route::get('/katakana-course', function () {
         return view('courses\katakana_course');
     });
+    //gruppok
+    Route::get('/group-make', function () {
+        return view('socials\makegroup');
+    });
+    Route::get('/group-find', function () {
+        return view('socials\findgroups');
+    });
+    Route::get('/group-show', function () {
+        return view('socials\group');
+    });
 
     //menüpontok
     Route::view('/maincourse-start', 'courses/maincourse-start')->name('courses/maincourse.start');
     Route::view('/writingcourse-start', 'courses/writingcourse-start')->name('courses/writingcourse.start');
     Route::view('/friends', 'socials/friendsmain')->name('socials/friendsmain');
-    Route::view('/groups', 'socials/groupsmain')->name('socials/groupsmain');
+    Route::get('/groups', [GroupsController::class, 'index'])->name('groups.index');
     Route::view('/recommendations', 'recommendations')->name('recommendations');
 
 

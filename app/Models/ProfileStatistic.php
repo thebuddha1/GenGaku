@@ -32,7 +32,6 @@ class ProfileStatistic extends Model
         $this->attributes['streak'] = 1;
         $this->attributes['last_login'] = now();
         $this->attributes['logged_in_today'] = true;
-        $this->attributes['highest_rank'] = 0;
         $this->attributes['finished_tests'] = 0;
     }
 }

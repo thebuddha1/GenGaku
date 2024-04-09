@@ -45,7 +45,7 @@
                 </nav>
             </div>    
                 <div>
-                    <h1>My groups</h1>
+                    <h1>find groups</h1>
                 </div>
             </div>
         </div>

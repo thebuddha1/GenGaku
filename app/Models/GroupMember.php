@@ -14,4 +14,9 @@ class GroupMember extends Model
         'member_id',
     ];
 
+    public function group()
+    {
+        return $this->belongsTo(Gropup::class);
+    }
+
 }

@@ -38,7 +38,6 @@ class CreateNewUser implements CreatesNewUsers
             'streak' => 1,
             'last_login' => now(),
             'logged_in_today' => true,
-            'highest_rank' => 0,
             'finished_tests' => 0,
         ]);
 
