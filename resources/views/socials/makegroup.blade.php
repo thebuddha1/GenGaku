@@ -35,17 +35,29 @@
                 }
             </style>
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-            <div>
-                <nav class="navbar">
-                    <ul>
-                        <li><a href="/groups">My Groups</a></li>
-                        <li><a href="/group-find">Find Group</a></li>
-                        <li><a href="/group-make">Make New Group</a></li>
-                    </ul>
-                </nav>
-            </div>    
                 <div>
-                    <h1>make new group</h1>
+                    <nav class="navbar">
+                        <ul>
+                            <li><a href="/groups">My Groups</a></li>
+                            <li><a href="/group-find">Find Group</a></li>
+                            <li><a href="/group-make">Make New Group</a></li>
+                        </ul>
+                    </nav>
+                </div>    
+                <div>
+                    <h1>Make New Group</h1>
+                    <form method="POST" action="{{ route('save-group') }}">
+                        @csrf
+                        <div>
+                            <label for="groupname">Group Name:</label>
+                            <input type="text" id="groupname" name="groupname">
+                        </div>
+                        <div>
+                            <label for="groupmessage">Group Message (optional):</label>
+                            <textarea id="groupmessage" name="groupmessage" rows="4" cols="50"></textarea>
+                        </div>
+                        <button type="submit">Make New Group</button>
+                    </form>
                 </div>
             </div>
         </div>

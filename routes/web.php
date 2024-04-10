@@ -18,6 +18,8 @@ Route::post('/save-prog-hir', [WritingCourseController::class, 'saveProgressHir'
 Route::post('/save-prog-kat', [WritingCourseController::class, 'saveProgressKat'])->name('save-prog-kat');
 Route::post('/save-prog', [MainCourseController::class, 'saveProgress'])->name('save-prog');
 
+Route::post('/save-group', [GroupsController::class, 'makeGroup'])->name('save-group');
+
 Route::get('/', function () {
     return view('welcome');
 });
