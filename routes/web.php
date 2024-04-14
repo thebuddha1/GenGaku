@@ -69,11 +69,12 @@ Route::middleware([
     //gruppok
     Route::get('/group-make', function () {
         return view('socials\makegroup');
-    });
+    })->name('group-make');
     Route::get('/group-find', [GroupsController::class, 'index'])->name('groups-find.index');
     Route::get('/group-show', function () {
         return view('socials\group');
     });
+    Route::get('/groups-overview/{groupId}', [GroupsController::class, 'overview'])->name('groups.overview');
 
     //menüpontok
     Route::view('/maincourse-start', 'courses/maincourse-start')->name('courses/maincourse.start');

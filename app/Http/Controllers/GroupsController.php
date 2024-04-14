@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\GroupMember;
 use App\Models\Group;
 use App\Models\GroupMessages;
+use App\Models\User;
 
 class GroupsController extends Controller
 {
@@ -36,6 +37,10 @@ class GroupsController extends Controller
         if (empty($request->groupname)) {
             return redirect()->route('group-make')->with('error', 'Group name cannot be empty');
         }
+        $existingGroup = Group::where('group_name', $request->groupname)->first();
+        if ($existingGroup) {
+            return redirect()->route('group-make')->with('error', 'Group name already taken');
+        }
         else{
             $group = new Group();
             $group->group_owner_id = auth()->user()->id;
@@ -54,15 +59,23 @@ class GroupsController extends Controller
             $message->group_id = $group->id;
             $message->message = $request->groupmessage;
             $message->save();
-        } else {
-            $message = new GroupMessages();
-            $message->sender_id = auth()->user()->id;
-            $message->group_id = $group->id;
-            $message->message = 'No group message yet';
-            $message->save();
         }
 
         return redirect()->route('groups-find.index')->with('success', 'Group created successfully');
+    }
+
+    public function overview($groupId)
+    {
+        $group = Group::findOrFail($groupId);
+        $groupMembers = User::whereIn('id', function ($query) use ($groupId) {
+            $query->select('member_id')
+                ->from('group_members')
+                ->where('group_id', $groupId);
+        })->get();
+
+        $groupMessages = GroupMessages::where('group_id', $groupId)->get();
+
+        return view('socials.group', compact('group', 'groupMembers', 'groupMessages'));
     }
 
     public function sendInvite(){

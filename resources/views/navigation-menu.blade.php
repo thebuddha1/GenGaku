@@ -31,12 +31,6 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="{{ route('socials/friendsmain') }}" :active="request()->routeIs('socials/friendsmain')">
-                        {{ __('Friends') }}
-                    </x-nav-link>
-                </div>
-
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link href="{{ route('groups.uGroups') }}" :active="request()->routeIs('groups.index')">
                         {{ __('Groups') }}
                     </x-nav-link>

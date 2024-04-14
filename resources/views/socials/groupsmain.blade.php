@@ -35,26 +35,31 @@
                 }
             </style>
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-            <div>
-                <nav class="navbar">
-                    <ul>
-                        <li><a href="/groups">My Groups</a></li>
-                        <li><a href="/group-find">Find Group</a></li>
-                        <li><a href="/group-make">Make New Group</a></li>
-                    </ul>
-                </nav>
-            </div>    
                 <div>
-                    <h1>My groups</h1>
+                    <nav class="navbar">
+                        <ul>
+                            <li><a href="/groups">My Groups</a></li>
+                            <li><a href="/group-find">Find Group</a></li>
+                            <li><a href="/group-make">Make New Group</a></li>
+                        </ul>
+                    </nav>
+                </div>    
+                <div>
+                    <h1>My groups:</h1>
+                    <ul>
+                        @if($groups->isEmpty())
+                            <h2>You are not in any group yet</h2>
+                        @else
+                            @foreach($groups as $group)
+                                <li><a href="{{ route('groups.overview', $group->id) }}">{{ $group->group_name }}</a></li>
+                            @endforeach
+                        @endif
+                    </ul>
                 </div>
                 <div>
-                <ul>
-                    @foreach($groups as $group)
-                        <li>{{ $group->group_name }}</li>
-                    @endforeach
-                </ul>
-            </div>
-            </div>
+                    <h1>Group invites:</h1>
+                </div>
+            <div>
         </div>
     </div>
 </x-app-layout>
