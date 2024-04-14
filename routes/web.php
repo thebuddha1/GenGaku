@@ -70,9 +70,7 @@ Route::middleware([
     Route::get('/group-make', function () {
         return view('socials\makegroup');
     });
-    Route::get('/group-find', function () {
-        return view('socials\findgroups');
-    });
+    Route::get('/group-find', [GroupsController::class, 'index'])->name('groups-find.index');
     Route::get('/group-show', function () {
         return view('socials\group');
     });
@@ -81,7 +79,7 @@ Route::middleware([
     Route::view('/maincourse-start', 'courses/maincourse-start')->name('courses/maincourse.start');
     Route::view('/writingcourse-start', 'courses/writingcourse-start')->name('courses/writingcourse.start');
     Route::view('/friends', 'socials/friendsmain')->name('socials/friendsmain');
-    Route::get('/groups', [GroupsController::class, 'index'])->name('groups.index');
+    Route::get('/groups', [GroupsController::class, 'userGroups'])->name('groups.uGroups');
     Route::view('/recommendations', 'recommendations')->name('recommendations');
 
 

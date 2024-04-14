@@ -33,6 +33,15 @@
                 .navbar a:hover {
                     color: blue;
                 }
+
+                #groupList li {
+                    display: block;
+                }
+
+                #groupList li a {
+                    margin-left: 10px;
+                }
+
             </style>
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
             <div>
@@ -45,9 +54,50 @@
                 </nav>
             </div>    
                 <div>
-                    <h1>find groups</h1>
+                    <h1>Find Groups</h1>
+                    @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    <form id="searchForm">
+                        <label for="search">Search by group name:</label>
+                        <input type="text" id="search" name="search">
+                    </form>
+
+                    <ul id="groupList">
+                        @foreach($groups as $group)
+                            <li>
+                                <span>{{ $group->group_name }}</span>
+                                <a href="#request-join">Request Join</a>
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.getElementById('search');
+            const groupList = document.getElementById('groupList');
+            const groupItems = groupList.getElementsByTagName('li');
+
+            searchInput.addEventListener('input', function () {
+                const searchTerm = searchInput.value.toLowerCase();
+
+                for (let i = 0; i < groupItems.length; i++) {
+                    const groupItem = groupItems[i];
+                    const groupName = groupItem.querySelector('span').textContent.toLowerCase();
+
+                    if (groupName.includes(searchTerm)) {
+                        groupItem.style.display = 'block';
+                    } else {
+                        groupItem.style.display = 'none';
+                    }
+                }
+            });
+        });
+    </script>
 </x-app-layout>

@@ -47,6 +47,13 @@
                 <div>
                     <h1>My groups</h1>
                 </div>
+                <div>
+                <ul>
+                    @foreach($groups as $group)
+                        <li>{{ $group->group_name }}</li>
+                    @endforeach
+                </ul>
+            </div>
             </div>
         </div>
     </div>
