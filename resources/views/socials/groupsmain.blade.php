@@ -57,7 +57,29 @@
                     </ul>
                 </div>
                 <div>
-                    <h1>Group invites:</h1>
+                    <h1>Group invites from the following groups:</h1>
+                    @if($groupInvites->isEmpty())
+                        <p>No group invites.</p>
+                    @else
+                        <ul>
+                            @foreach($groupInvites as $invite)
+                                @php
+                                    $group = $inviteGroups->where('id', $invite->group_id)->first();
+                                @endphp
+                                <li>
+                                    {{ $group ? $group->group_name : 'Unknown Group' }}
+                                    <form action="{{ route('groups.invite.accept', ['groupId' => $group->id, 'invitationId' => $invite->id]) }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        <button type="submit">Accept</button>
+                                    </form>
+                                    <form action="{{ route('groups.invite.reject', ['invitationId' => $invite->id]) }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        <button type="submit">Reject</button>
+                                    </form>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
                 </div>
             <div>
         </div>

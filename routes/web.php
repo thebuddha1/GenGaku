@@ -19,6 +19,13 @@ Route::post('/save-prog-kat', [WritingCourseController::class, 'saveProgressKat'
 Route::post('/save-prog', [MainCourseController::class, 'saveProgress'])->name('save-prog');
 
 Route::post('/save-group', [GroupsController::class, 'makeGroup'])->name('save-group');
+Route::get('/groups/{groupId}/join', [GroupsController::class, 'requestJoin'])->name('request.join');
+Route::post('/groups/{groupId}/join/accept/{userId}', [GroupsController::class, 'acceptRequest'])->name('groups.join.accept');
+Route::post('/groups/{groupId}/join/deny/{userId}', [GroupsController::class, 'denyRequest'])->name('groups.join.deny');
+Route::post('/groups/{groupId}/invite', [GroupsController::class, 'invite'])->name('groups.invite');
+Route::post('/groups/{groupId}/invite/{invitationId}/accept', [GroupsController::class, 'acceptInvitation'])->name('groups.invite.accept');
+Route::post('/groups/invite/{invitationId}/reject', [GroupsController::class, 'rejectInvitation'])->name('groups.invite.reject');
+Route::post('/groups/{groupId}/leave', [GroupsController::class, 'leaveGroup'])->name('groups.leave');
 
 Route::get('/', function () {
     return view('welcome');

@@ -66,11 +66,23 @@
                         <input type="text" id="search" name="search">
                     </form>
 
+                    @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+                    
                     <ul id="groupList">
                         @foreach($groups as $group)
                             <li>
                                 <span>{{ $group->group_name }}</span>
-                                <a href="#request-join">Request Join</a>
+                                <a href="{{ route('request.join', ['groupId' => $group->id]) }}">Request Join</a>
                             </li>
                         @endforeach
                     </ul>
