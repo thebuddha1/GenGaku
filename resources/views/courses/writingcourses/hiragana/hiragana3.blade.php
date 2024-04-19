@@ -19,7 +19,7 @@
 <body>
     <div>
         <div style="margin-bottom: 10px;">
-            <label for="hiraganaInput">kaka:</label>
+            <label for="hiraganaInput">hiragana:</label>
         </div>
         <div style="margin-bottom: 10px;">
             <label style="font-size: 20px;">{{ $labelContent }}</label>
