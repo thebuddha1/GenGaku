@@ -26,6 +26,7 @@ Route::post('/groups/{groupId}/invite', [GroupsController::class, 'invite'])->na
 Route::post('/groups/{groupId}/invite/{invitationId}/accept', [GroupsController::class, 'acceptInvitation'])->name('groups.invite.accept');
 Route::post('/groups/invite/{invitationId}/reject', [GroupsController::class, 'rejectInvitation'])->name('groups.invite.reject');
 Route::post('/groups/{groupId}/leave', [GroupsController::class, 'leaveGroup'])->name('groups.leave');
+Route::post('/groups/{groupId}/send-message', [GroupsController::class, 'sendGroupMessage'])->name('groups.sendMessage');
 
 Route::get('/', function () {
     return view('welcome');

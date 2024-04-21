@@ -107,11 +107,12 @@
                                 {{ session('error') }}
                             </div>
                         @endif
-                        <form id="changeMessage">
+                        <form id="changeMessage" method="POST" action="{{ route('groups.sendMessage', ['groupId' => $group->id]) }}">
+                            @csrf
                             <label for="change">Add new group message:</label>
                             <span>
                                 <textarea id="change" name="change" rows="4" cols="50"></textarea>
-                                <button type= submit>send message</button>
+                                <button type="submit">Send Message</button>
                             </span>
                         </form>
                         <h2>

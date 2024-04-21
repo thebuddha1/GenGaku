@@ -55,12 +55,6 @@
             </div>    
                 <div>
                     <h1>Find Groups</h1>
-                    @if(session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
-                    @endif
-
                     <form id="searchForm">
                         <label for="search">Search by group name:</label>
                         <input type="text" id="search" name="search">

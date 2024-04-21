@@ -211,4 +211,21 @@ class GroupsController extends Controller
         return redirect()->route('groups.uGroups')->with('success', 'You have left the group.');
     }
 
+    public function sendGroupMessage(Request $request, $groupId)
+    {
+        $validatedData = $request->validate([
+            'change' => 'required|string|max:255',
+        ]);
+
+        $groupMessage = new GroupMessages();
+        $groupMessage->sender_id = auth()->user()->id;
+        $groupMessage->group_id = $groupId;
+        $groupMessage->message = $validatedData['change'];
+        $groupMessage->save();
+
+        
+        return redirect()->route('groups.overview', ['groupId' => $groupId])->with('success', 'Message sent successfully!');
+
+    }
+
 }
