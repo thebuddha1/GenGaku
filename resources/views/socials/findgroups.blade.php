@@ -1,82 +1,53 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-white-800 leading-tight">
+    <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Groups') }}
         </h2>
     </x-slot>
 <!--
     -->
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <style>
-                .navbar {
-                    padding: 10px;
-                }
-
-                .navbar ul {
-                    list-style-type: none;
-                    margin: 0;
-                    padding: 0;
-                }
-
-                .navbar li {
-                    display: inline;
-                    margin-right: 20px;
-                }
-
-                .navbar a {
-                    text-decoration: none;
-                    color: black;
-                    font-weight: bold;
-                }
-
-                .navbar a:hover {
-                    color: blue;
-                }
-
-                #groupList li {
-                    display: block;
-                }
-
-                #groupList li a {
-                    margin-left: 10px;
-                }
-
-            </style>
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-            <div>
-                <nav class="navbar">
-                    <ul>
-                        <li><a href="/groups">My Groups</a></li>
-                        <li><a href="/group-find">Find Group</a></li>
-                        <li><a href="/group-make">Make New Group</a></li>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-8">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
+                <div class="p-6 lg:p-8 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
+                    <ul style="list-style-type: none; margin: 0; padding: 0;">
+                        <li style="display: inline; margin-right: 20px;" class="mb-8 text-gray-800 dark:text-gray-200"><a href="/groups">My Groups</a></li>
+                        <li style="display: inline; margin-right: 20px;" class="mb-8 text-gray-800 dark:text-gray-200"><a href="/group-find">Find Group</a></li>
+                        <li style="display: inline; margin-right: 20px;" class="mb-8 text-gray-800 dark:text-gray-200"><a href="/group-make">Make New Group</a></li>
                     </ul>
-                </nav>
-            </div>    
-                <div>
-                    <h1>Find Groups</h1>
-                    <form id="searchForm">
-                        <label for="search">Search by group name:</label>
-                        <input type="text" id="search" name="search">
-                    </form>
-
+                </div> 
+                <div class="p-6 lg:p-8 dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
+                    <div>
+                        <h1 class="mb-8 text-gray-800 dark:text-gray-200">Find Groups</h1>
+                        <form id="searchForm">
+                            <label for="search" class="mb-8 text-gray-800 dark:text-gray-200">Search by group name:</label>
+                            <input type="text" id="search" name="search" style="width: 400px; padding: 8px; border-radius: 5px; text-align: center;">
+                        </form>
+                    </div>
+                </div>
+                <div class="p-6 lg:p-8 dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
                     @if(session('success'))
                         <div class="alert alert-success">
-                            {{ session('success') }}
+                            <p class="mb-8 text-gray-800 dark:text-gray-200">
+                                {{ session('success') }}
+                            </p>
                         </div>
                     @endif
-
                     @if(session('error'))
                         <div class="alert alert-danger">
-                            {{ session('error') }}
+                            <p class="mb-8 text-gray-800 dark:text-gray-200">
+                                {{ session('error') }}
+                            </p>
                         </div>
                     @endif
-                    
+                            
                     <ul id="groupList">
                         @foreach($groups as $group)
-                            <li>
-                                <span>{{ $group->group_name }}</span>
-                                <a href="{{ route('request.join', ['groupId' => $group->id]) }}">Request Join</a>
+                            <li class="flex items-center mb-4">
+                                <span class="mb-8 text-gray-800 dark:text-gray-200 mr-5">{{ $group->group_name }}</span>
+                                <p class="mb-8 text-gray-800 dark:text-gray-200 bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded-md">
+                                    <a href="{{ route('request.join', ['groupId' => $group->id]) }}">Request Join</a>
+                                </p>
                             </li>
                         @endforeach
                     </ul>
