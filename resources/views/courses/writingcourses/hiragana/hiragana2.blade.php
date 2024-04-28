@@ -7,46 +7,73 @@
 
     <style>
         .invisible {
-            display: none;
+            display: none !important;
+        }
+        label.invisible {
+            display: none !important;
         }
         .green {
-            background-color: green;
-            color: white;
+            background-color: #444 !important;
+            color: white !important;
         }
-
+        .red {
+            background-color: red !important;
+            color: white !important;
+        }
         .locked {
             pointer-events: none;
             opacity: 0.6;
             background-color: initial !important;
             color: initial !important;
         }
-
-        .red {
-            background-color: red;
-            color: white;
+        .character-button {
+            background-color: gray !important;
         }
-
+        .sound-button {
+            background-color: gray !important;
+        }
+        .character-button.green,
+        .sound-button.green {
+            background-color: #444 !important;
+        }
+        .character-button.red,
+        .sound-button.red {
+            background-color: red !important;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="row">
+            <h1 class="text-white" style="color: white !important; font-size: 1.5rem; margin-bottom: 50px;">Match the characters with the sound</h1>
             <div class="col-md-6">
-                <h2>Characters</h2>
+                <h2 class="text-white" style="color: white !important; font-size: 1rem; margin-bottom: 6px;">Characters</h2>
                 @php
                     shuffle($characterData);
                 @endphp
                 @foreach ($characterData as $character)
-                    <button class="character-button" data-id="{{ $character['id'] }}">{{ $character['character'] }}</button>
+                    <button 
+                        class="character-button font-semibold text-gray-600 bg-gray-500 rounded-lg px-6 py-3 mt-20 mb-10" 
+                        data-id="{{ $character['id'] }}"
+                        style="color: white !important; font-size: 1rem; margin-top: 2rem !important; margin-bottom: 1.5rem !important;"
+                    >
+                        {{ $character['character'] }}
+                    </button>
                 @endforeach
             </div>
             <div class="col-md-6">
-                <h2>Sounds</h2>
+                <h2 class="text-white" style="color: white !important; font-size: 1rem; margin-bottom: 6px;">Sounds</h2>
                 @php
                     shuffle($characterData);
                 @endphp
                 @foreach ($characterData as $character)
-                    <button class="sound-button" data-id="{{ $character['id'] }}">{{ $character['sound'] }}</button>
+                    <button 
+                        class="sound-button font-semibold text-gray-600 bg-gray-500 rounded-lg px-6 py-3 mt-20 mb-10"
+                        data-id="{{ $character['id'] }}"
+                        style="color: white !important; font-size: 1rem; margin-top: 2rem !important; margin-bottom: 1.5rem !important;"
+                    >
+                        {{ $character['sound'] }}
+                    </button>
                 @endforeach
             </div>
         </div>

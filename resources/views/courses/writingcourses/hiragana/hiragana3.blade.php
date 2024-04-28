@@ -6,7 +6,13 @@
     <title>Document</title>
     <style>
         .invisible {
-            display: none;
+            display: none !important;
+        }
+        .label.invisible {
+            display: none !important;
+        }
+        .hiragana-button {
+            background-color: gray !important;
         }
         .match-feedback {
             color: green;
@@ -19,29 +25,35 @@
 <body>
     <div>
         <div style="margin-bottom: 10px;">
-            <label for="hiraganaInput">hiragana:</label>
+            <label for="hiraganaInput" class="text-white" style="color: white !important; font-size: 1.5rem; margin-bottom: 50px;">What sound does this make:</label>
         </div>
         <div style="margin-bottom: 10px;">
-            <label style="font-size: 20px;">{{ $labelContent }}</label>
+            <label class="text-white" style="color: white !important; font-size: 2rem; margin-bottom: 50px;">{{ $labelContent }}</label>
         </div>
         <div style="margin-bottom: 10px;">
             <label class="invisible" id="soundLabel" style="font-size: 20px;">{{ $soundLabelContent }}</label>
         </div>
         <div style="margin-bottom: 10px;">
-            <input type="text" id="hiraganaInput" name="hiraganaInput">
+            <input type="text" id="hiraganaInput" name="hiraganaInput" style="width: 400px; padding: 10px; border-radius: 5px; text-align: center;">
         </div>
     </div>
 
     <div>
         <div style="margin-bottom: 10px;">
             @foreach ($buttonContent as $button)
-                <button style="margin-right: 5px;" class="hiragana-button" data-sound="{{ $button }}">{{ $button }}</button>
+                <button 
+                    class="hiragana-button font-semibold text-gray-600 bg-gray-500 rounded-lg px-6 py-3 mt-20 mb-10" 
+                    data-sound="{{ $button }}"
+                    style="color: white !important; font-size: 1rem; margin-top: 2rem !important; margin-bottom: 1.5rem !important;"
+                >
+                    {{ $button }}
+                </button>
             @endforeach
         </div>
     </div>
 
     <div>
-        <button style="margin-top: 10px;" id="check-button">Check</button>
+        <button id="check-button" class="font-semibold text-gray-600 bg-gray-500 rounded-lg px-6 py-3" style="color: white !important; font-size: 1rem; background-color: gray !important;">Check</button>
         <div id="feedback"></div>
     </div>
 
@@ -86,10 +98,10 @@
             var soundLabelText = soundLabel.textContent.trim();
 
             if (textBoxValue === soundLabelText) {
-                feedbackDiv.textContent = 'Match!';
+                feedbackDiv.textContent = 'Correct!';
                 feedbackDiv.className = 'match-feedback';
             } else {
-                feedbackDiv.textContent = 'Mismatch!';
+                feedbackDiv.textContent = 'Incorrect! The right right answer is ' + soundLabelText;
                 feedbackDiv.className = 'mismatch-feedback';
 
                 mistakes++;
@@ -99,6 +111,5 @@
             }
         });
     </script>
-
 </body>
 </html>
