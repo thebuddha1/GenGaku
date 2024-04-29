@@ -1,24 +1,19 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-white-800 leading-tight">
+    <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Writing course') }}
         </h2>
     </x-slot>
 <!--
     -->
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <div class="col-span-6 sm:col-span-4">
-                    <x-label for="cur_ktkn" value="{{ __('Current Lesson (Katakana)') }}" />
-                    <p>{{ auth()->user()->profileProgression->cur_ktkn }}</p>
-                </div>
-                <div class="col-span-6 sm:col-span-4">
-                    <x-label for="fnshd_tsts_kat" value="{{ __('Finished tests in current lesson(katakana)') }}" />
-                    <p>{{ auth()->user()->profileProgression->fnshd_tsts_kat }}</p>
-                </div>
-                <h1 class="text-4xl font-semibold">Katakana</h1>
-                <p>Welcom to the Katakana course. <br> 
+<div class="py-12 flex flex-col justify-between items-center">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-8">
+        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
+            <div class="p-6 lg:p-8 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
+                <h1 class="font-semibold text-2xl mb-4 text-gray-800 dark:text-gray-200 leading-tight">Welcome to the Katakana course</h1>
+            </div>
+            <div class="bg-gray-200 dark:bg-gray-800 bg-opacity-25">
+                <p class="grid grid-cols-1 gap-6 lg:gap-8 p-6 lg:p-8 dark:via-transparent border-b border-gray-200 dark:border-gray-700 mb-8 text-gray-800 dark:text-gray-200">
                     In this page you'll be getting to know one of Japanes' 3 writing systems. <br>
                     Katakana is one of the 2 kana systems of the Japanese language (kana meaning syllabaries, used to write Japanes phonological units, in other word morae). <br> 
                     It contains 46 symbols and an additional 63 variations of the basic symbols, all of them representing a syllable.<br>
@@ -33,24 +28,36 @@
                     telling you about their pronunciation and providing some examples for it.<br>
                     When you've completed enough tests you can progress to the next one. Simple, isn't it? Let jump right into it.<br>
                 </p>
-                <h1 class="text-2xl font-semibold">Lesson 1</h1>
-            <p>part 1: ア, イ, ウ, エ, オ</p>
-            <p>
-                ア->a   as in father<br>
-                イ->i   as in easy<br>
-                ウ->u   as in too<br>
-                エ->e   as in pay<br>
-                オ->o   as in open<br>
-            </p>
-            <p>part 2: カ, キ, ク, ケ, コ</p>
-            <p>
-                カ->ka   as in cut<br>
-                キ->ki   as in keep<br>
-                ク->ku   as in cool<br>
-                ケ->ke   as in cat<br>
-                コ->ko   as in cold<br>
-            </p>
-            <a href="/quiz-kat?lesson=1"><button type="button">Start Test</button></a>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8 dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">Current lesson you are at: {{ auth()->user()->profileProgression->cur_ktkn }}</p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">Finished tests in current lesson: {{ auth()->user()->profileProgression->fnshd_tsts_kat }}</p>
+                </div>
+            
+                <div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
+                        <h1 class="font-semibold text-2xl mb-4 text-gray-800 dark:text-gray-200 leading-tight" style="font-weight: 600; font-size: 1.5rem;">Lesson 1</h1>
+                        <button class="toggle-button font-semibold text-2xl mb-4 text-gray-800 dark:text-gray-200 leading-tight" style="font-weight: 600; font-size: 1.5rem;">+</button>
+                    </div>
+                    <div class="content-details grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8 dark:via-transparent border-b border-gray-200 dark:border-gray-700 hidden">
+                        <p class="mb-8 text-gray-800 dark:text-gray-200">part 1: ア, イ, ウ, エ, オ</p>
+                        <p class="mb-8 text-gray-800 dark:text-gray-200">
+                            ア->a   as in father<br>
+                            イ->i   as in easy<br>
+                            ウ->u   as in too<br>
+                            エ->e   as in pay<br>
+                            オ->o   as in open<br>
+                        </p>
+                        <p class="mb-8 text-gray-800 dark:text-gray-200">part 2: カ, キ, ク, ケ, コ</p>
+                        <p class="mb-8 text-gray-800 dark:text-gray-200">
+                            カ->ka   as in cut<br>
+                            キ->ki   as in keep<br>
+                            ク->ku   as in cool<br>
+                            ケ->ke   as in cat<br>
+                            コ->ko   as in cold<br>
+                        </p>
+                        <a href="/quiz-kat?lesson=1"><button type="button" class="text-gray-800 dark:text-gray-200 bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded-md mr-20">Start Test</button></a>
+                    </div>
+                </div>
 
             <h1 class="text-2xl font-semibold">Lesson 2</h1>
             <p>part 1: サ, シ, ス, セ, ソ</p>
@@ -257,4 +264,17 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggleButtons = document.querySelectorAll('.toggle-button');
+            const contentDetails = document.querySelectorAll('.content-details');
+
+            toggleButtons.forEach(function (button, index) {
+                button.addEventListener('click', function () {
+                    contentDetails[index].classList.toggle('hidden');
+                    button.textContent = contentDetails[index].classList.contains('hidden') ? '+' : '-';
+                });
+            });
+        });
+    </script>
 </x-app-layout>
