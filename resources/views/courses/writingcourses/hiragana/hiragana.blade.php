@@ -41,8 +41,6 @@
             {{ $sound }}
         </button>
     @endforeach
-
-
     <div>
         <button id="check-button" class="font-semibold text-gray-600 bg-gray-500 rounded-lg px-6 py-3" style="color: white !important; font-size: 1rem; background-color: gray !important;">Check</button>
         <div id="feedback"></div>

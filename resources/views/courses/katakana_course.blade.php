@@ -59,208 +59,265 @@
                     </div>
                 </div>
 
-            <h1 class="text-2xl font-semibold">Lesson 2</h1>
-            <p>part 1: サ, シ, ス, セ, ソ</p>
-            <p>
-                サ->sa   as in sun<br>
-                シ->shi   as in she<br>
-                ス->su   as in suit<br>
-                セ->se   as in set<br>
-                ソ->so   as in soap<br>
-            </p>
-            <p>part 2: タ, チ, ツ, テ, ト</p>
-            <p>
-                タ->ta   as in tall<br>
-                チ->chi   as in cheese<br>
-                ツ->tsu   as in tsunami<br>
-                テ->te   as in ten<br>
-                ト->to   as in toe<br>
-            </p>
-            <a href="/quiz-kat?lesson=2"><button type="button">Start Test</button></a>
+            <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
+                    <h1 class="font-semibold text-2xl mb-4 text-gray-800 dark:text-gray-200 leading-tight">Lesson 2</h1>
+                    <button class="toggle-button font-semibold text-2xl mb-4 text-gray-800 dark:text-gray-200 leading-tight">+</button>
+                </div>
+                <div class="content-details grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8 dark:via-transparent border-b border-gray-200 dark:border-gray-700 hidden">
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">part 1: サ, シ, ス, セ, ソ</p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">
+                        サ->sa   as in sun<br>
+                        シ->shi   as in she<br>
+                        ス->su   as in suit<br>
+                        セ->se   as in set<br>
+                        ソ->so   as in soap<br>
+                    </p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">part 2: タ, チ, ツ, テ, ト</p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">
+                        タ->ta   as in tall<br>
+                        チ->chi   as in cheese<br>
+                        ツ->tsu   as in tsunami<br>
+                        テ->te   as in ten<br>
+                        ト->to   as in toe<br>
+                    </p>
+                    <a href="/quiz-kat?lesson=2"><button type="button" class="text-gray-800 dark:text-gray-200 bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded-md mr-20">Start Test</button></a>
+                </div>
+            </div>
 
-            <h1 class="text-2xl font-semibold">Lesson 3</h1>
-            <p>part 1: ナ, ニ, ヌ, ネ, ノ, ン</p>
-            <p>
-                ナ->na   as in nut<br>
-                ニ->ni   as in knee<br>
-                ヌ->nu   as in new<br>
-                ネ->ne   as in net<br>
-                ノ->no   as in note<br>
-                ン->n   as in sung<br>
-            </p>
-            <p>part 2: ハ, ヒ, フ, ヘ, ホ, ヤ, ユ, ヨ</p>
-            <p>
-                ハ->ha   as in hot<br>
-                ヒ->hi   as in heat<br>
-                フ->fu   as in food<br>
-                ヘ->he   as in head<br>
-                ホ->ho   as in hope<br>
-                ヤ->ya   as in yard<br>
-                ユ->yu   as in you<br>
-                ヨ->yo   as in yo-yo<br>
-            </p>
-            <a href="/quiz-kat?lesson=3"><button type="button">Start Test</button></a>
+            <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
+                    <h1 class="font-semibold text-2xl mb-4 text-gray-800 dark:text-gray-200 leading-tight">Lesson 3</h1>
+                    <button class="toggle-button font-semibold text-2xl mb-4 text-gray-800 dark:text-gray-200 leading-tight">+</button>
+                </div>
+                <div class="content-details grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8 dark:via-transparent border-b border-gray-200 dark:border-gray-700 hidden">
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">part 1: ナ, ニ, ヌ, ネ, ノ, ン</p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">
+                        ナ->na   as in nut<br>
+                        ニ->ni   as in knee<br>
+                        ヌ->nu   as in new<br>
+                        ネ->ne   as in net<br>
+                        ノ->no   as in note<br>
+                        ン->n   as in sung<br>
+                    </p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">part 2: ハ, ヒ, フ, ヘ, ホ, ヤ, ユ, ヨ</p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">
+                        ハ->ha   as in hot<br>
+                        ヒ->hi   as in heat<br>
+                        フ->fu   as in food<br>
+                        ヘ->he   as in head<br>
+                        ホ->ho   as in hope<br>
+                        ヤ->ya   as in yard<br>
+                        ユ->yu   as in you<br>
+                        ヨ->yo   as in yo-yo<br>
+                    </p>
+                    <a href="/quiz-kat?lesson=3"><button type="button" class="text-gray-800 dark:text-gray-200 bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded-md mr-20">Start Test</button></a>
+                </div>
+            </div>
 
-            <h1 class="text-2xl font-semibold">Lesson 4</h1>
-            <p>part 1: マ, ミ, ム, メ, モ</p>
-            <p>
-                マ->ma   as in mop<br>
-                ミ->mi   as in meet<br>
-                ム->mu   as in mood<br>
-                メ->me   as in met<br>
-                モ->mo   as in more<br>
-            </p>
-            <p>part 2: ラ, リ, ル, レ, ロ, ワ, ヲ</p>
-            <p>
-                ラ->ra   as in run<br>
-                リ->ri   as in read<br>
-                ル->ru   as in roof<br>
-                レ->re   as in red<br>
-                ロ->ro   as in row<br>
-                ワ->wa   as in water<br>
-                ヲ->wo   as in won<br>
-            </p>
-            <a href="/quiz-kat?lesson=4"><button type="button">Start Test</button></a>
+            <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
+                    <h1 class="font-semibold text-2xl mb-4 text-gray-800 dark:text-gray-200 leading-tight">Lesson 4</h1>
+                    <button class="toggle-button font-semibold text-2xl mb-4 text-gray-800 dark:text-gray-200 leading-tight">+</button>
+                </div>
+                <div class="content-details grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8 dark:via-transparent border-b border-gray-200 dark:border-gray-700 hidden">
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">part 1: マ, ミ, ム, メ, モ</p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">
+                        マ->ma   as in mop<br>
+                        ミ->mi   as in meet<br>
+                        ム->mu   as in mood<br>
+                        メ->me   as in met<br>
+                        モ->mo   as in more<br>
+                    </p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">part 2: ラ, リ, ル, レ, ロ, ワ, ヲ</p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">
+                        ラ->ra   as in run<br>
+                        リ->ri   as in read<br>
+                        ル->ru   as in roof<br>
+                        レ->re   as in red<br>
+                        ロ->ro   as in row<br>
+                        ワ->wa   as in water<br>
+                        ヲ->wo   as in won<br>
+                    </p>
+                    <a href="/quiz-kat?lesson=4"><button type="button" class="text-gray-800 dark:text-gray-200 bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded-md mr-20">Start Test</button></a>
+                </div>
+            </div>
 
-            <h1 class="text-2xl font-semibold">Lesson 5</h1>
-            <p>part 1: ガ, ギ, グ, ゲ, ゴ</p>
-            <p>
-                ガ->ga   as in garden<br>
-                ギ->gi   as in gift<br>
-                グ->gu   as in good<br>
-                ゲ->ge   as in get<br>
-                ゴ->go   as in go<br>
-            </p>
-            <p>part 2: ザ, ジ, ズ, ゼ, ゾ</p>
-            <p>
-                ザ->za   as in zoo<br>
-                ジ->ji   as in jeep<br>
-                ズ->zu   as in zebra<br>
-                ゼ->ze   as in zero<br>
-                ゾ->zo   as in zone<br>
-            </p>
-            <a href="/quiz-kat?lesson=5"><button type="button">Start Test</button></a>
-
-            <h1 class="text-2xl font-semibold">Lesson 6</h1>
-            <p>part 1: ダ, ヂ, ヅ, デ, ド</p>
-            <p>
-                ダ->da   as in dad<br>
-                ヂ->ji   as in g in gin<br>
-                ヅ->zu   as in heads<br>
-                デ->de   as in day<br>
-                ド->do   as in dog<br>
-            </p>
-            <p>part 2: バ, ビ, ブ, ベ, ボ</p>
-            <p>
-                バ->ba   as in bat<br>
-                ビ->bi   as in big<br>
-                ブ->bu   as in blue<br>
-                ベ->be   as in bed<br>
-                ボ->bo   as in boat<br>
-            </p>
-            <a href="/quiz-kat?lesson=6"><button type="button">Start Test</button></a>
-
-            <h1 class="text-2xl font-semibold">Lesson 7</h1>
-            <p>part 1: パ, ピ, プ, ペ, ポ</p>
-            <p>
-                パ->pa   as in part<br>
-                ピ->pi   as in pink<br>
-                プ->pu   as in pool<br>
-                ペ->pe   as in pen<br>
-                ポ->po   as in pole<br>
-            </p>
-            <p>part 2: キャ, キュ, キョ</p>
-            <p>
-                キャ->kya   as in c in cat<br>
-                キュ->kyu   as in queue<br>
-                キョ->kyo   as in cue<br>
-            </p>
-            <p>part 3: シャ, シュ, ショ</p>
-            <p>
-                シャ->sha   as in shop<br>
-                シュ->shu   as in shoot<br>
-                ショ->sho   as in shore<br>
-            </p>
-            <p>part 4: チャ, チュ, チョ</p>
-            <p>
-                チャ->cha   as in chart<br>
-                チュ->chu   as in chew<br>
-                チョ->cho   as in choke<br>
-            </p>
-            <a href="/quiz-kat?lesson=7"><button type="button">Start Test</button></a>
-
-            <h1 class="text-2xl font-semibold">Lesson 8</h1>
-            <p>part 1: ニャ, ニュ, ニョ</p>
-            <p>
-                ニャ->nya   as in knee<br>
-                ニュ->nyu   as in new<br>
-                ニョ->nyo   as in know<br>
-            </p>
-            <p>part 2: ヒャ, ヒュ, ヒョ</p>
-            <p>
-                ヒャ->hya   as in hue<br>
-                ヒュ->hyu   as in hugh<br>
-                ヒョ->hyo   as in hue<br>
-            </p>
-            <p>part 3: ミャ, ミュ, ミョ</p>
-            <p>
-                ミャ->mya   as in mia<br>
-                ミュ->myu   as in miu<br>
-                ミョ->myo   as in meow<br>
-            </p>
-            <p>part 4: リャ, リュ, リョ</p>
-            <p>
-                リャ->rya   as in ree<br>
-                リュ->ryu   as in ryou<br>
-                リョ->ryo   as in rio<br>
-            </p>
-            <a href="/quiz-kat?lesson=8"><button type="button">Start Test</button></a>
-
-            <h1 class="text-2xl font-semibold">Lesson 9</h1>
-            <p>part 1: ギャ, ギュ, ギョ</p>
-            <p>
-                ギャ->gya   as in ga<br>
-                ギュ->gyu   as in gyou<br>
-                ギョ->gyo   as in go<br>
-            </p>
-            <p>part 2: ジャ, ジュ, ジョ</p>
-            <p>
-                ジャ->ja   as in jay<br>
-                ジュ->ju   as in july<br>
-                ジョ->jo   as in joe<br>
-            </p>
-            <p>part 3: ビャ, ビュ, ビョ</p>
-            <p>
-                ビャ->bya   as in by a<br>
-                ビュ->byu   as in by u<br>
-                ビョ->byo   as in by o<br>
-            </p>
-            <p>part 4: ピャ, ピュ, ピョ</p>
-            <p>
-                ピャ->pya   as in py a<br>
-                ピュ->pyu   as in py u<br>
-                ピョ->pyo   as in py o<br>
-            </p>
-            <a href="/quiz-kat?lesson=9"><button type="button">Start Test</button></a>
-
-            <h1 class="text-2xl font-semibold">Lesson 10</h1>
-            <p>part 13: Double Consonants</p>
-            <p>
-                ッカ->kka   as in cat<br>
-                ッス->ssu   as in kiss<br>
-                ット->tto   as in bet<br>
-                ップ->ppu   as in lip<br>
-                ッリ->rri   as in tree<br>
-            </p>
-            <p>Extended Vowels</p>
-            <p>    
-                アア->aa   as in baa<br>
-                イイ->ii   as in beef<br>
-                ウウ->uu   as in boot<br>
-                エエ->ee   as in beet<br>
-                オオ->oo   as in boat<br>
-            </p>
-            <a href="/quiz-kat?lesson=10"><button type="button">Start Test</button></a>
+            <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
+                    <h1 class="font-semibold text-2xl mb-4 text-gray-800 dark:text-gray-200 leading-tight">Lesson 5</h1>
+                    <button class="toggle-button font-semibold text-2xl mb-4 text-gray-800 dark:text-gray-200 leading-tight">+</button>
+                </div>
+                <div class="content-details grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8 dark:via-transparent border-b border-gray-200 dark:border-gray-700 hidden">
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">part 1: ガ, ギ, グ, ゲ, ゴ</p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">
+                        ガ->ga   as in garden<br>
+                        ギ->gi   as in gift<br>
+                        グ->gu   as in good<br>
+                        ゲ->ge   as in get<br>
+                        ゴ->go   as in go<br>
+                    </p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">part 2: ザ, ジ, ズ, ゼ, ゾ</p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">
+                        ザ->za   as in zoo<br>
+                        ジ->ji   as in jeep<br>
+                        ズ->zu   as in zebra<br>
+                        ゼ->ze   as in zero<br>
+                        ゾ->zo   as in zone<br>
+                    </p>
+                    <a href="/quiz-kat?lesson=5"><button type="button" class="text-gray-800 dark:text-gray-200 bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded-md mr-20">Start Test</button></a>
+                </div>
+            </div>
+            <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
+                    <h1 class="font-semibold text-2xl mb-4 text-gray-800 dark:text-gray-200 leading-tight">Lesson 6</h1>
+                    <button class="toggle-button font-semibold text-2xl mb-4 text-gray-800 dark:text-gray-200 leading-tight">+</button>
+                </div>
+                <div class="content-details grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8 dark:via-transparent border-b border-gray-200 dark:border-gray-700 hidden">
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">part 1: ダ, ヂ, ヅ, デ, ド</p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">
+                        ダ->da   as in dad<br>
+                        ヂ->ji   as in g in gin<br>
+                        ヅ->zu   as in heads<br>
+                        デ->de   as in day<br>
+                        ド->do   as in dog<br>
+                    </p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">part 2: バ, ビ, ブ, ベ, ボ</p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">
+                        バ->ba   as in bat<br>
+                        ビ->bi   as in big<br>
+                        ブ->bu   as in blue<br>
+                        ベ->be   as in bed<br>
+                        ボ->bo   as in boat<br>
+                    </p>
+                    <a href="/quiz-kat?lesson=6"><button type="button" class="text-gray-800 dark:text-gray-200 bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded-md mr-20">Start Test</button></a>
+                </div>
+            </div>
+            <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
+                    <h1 class="font-semibold text-2xl mb-4 text-gray-800 dark:text-gray-200 leading-tight">Lesson 7</h1>
+                    <button class="toggle-button font-semibold text-2xl mb-4 text-gray-800 dark:text-gray-200 leading-tight">+</button>
+                </div>
+                <div class="content-details grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8 dark:via-transparent border-b border-gray-200 dark:border-gray-700 hidden">
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">part 1: パ, ピ, プ, ペ, ポ</p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">
+                        パ->pa   as in part<br>
+                        ピ->pi   as in pink<br>
+                        プ->pu   as in pool<br>
+                        ペ->pe   as in pen<br>
+                        ポ->po   as in pole<br>
+                    </p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">part 2: キャ, キュ, キョ</p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">
+                        キャ->kya   as in c in cat<br>
+                        キュ->kyu   as in queue<br>
+                        キョ->kyo   as in cue<br>
+                    </p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">part 3: シャ, シュ, ショ</p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">
+                        シャ->sha   as in shop<br>
+                        シュ->shu   as in shoot<br>
+                        ショ->sho   as in shore<br>
+                    </p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">part 4: チャ, チュ, チョ</p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">
+                        チャ->cha   as in chart<br>
+                        チュ->chu   as in chew<br>
+                        チョ->cho   as in choke<br>
+                    </p>
+                    <a href="/quiz-kat?lesson=7"><button type="button" class="text-gray-800 dark:text-gray-200 bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded-md mr-20">Start Test</button></a>
+                </div>
+            </div>
+            <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
+                    <h1 class="font-semibold text-2xl mb-4 text-gray-800 dark:text-gray-200 leading-tight">Lesson 8</h1>
+                    <button class="toggle-button font-semibold text-2xl mb-4 text-gray-800 dark:text-gray-200 leading-tight">+</button>
+                </div>
+                <div class="content-details grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8 dark:via-transparent border-b border-gray-200 dark:border-gray-700 hidden">
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">part 1: ニャ, ニュ, ニョ</p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">
+                        ニャ->nya   as in knee<br>
+                        ニュ->nyu   as in new<br>
+                        ニョ->nyo   as in know<br>
+                    </p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">part 2: ヒャ, ヒュ, ヒョ</p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">
+                        ヒャ->hya   as in hue<br>
+                        ヒュ->hyu   as in hugh<br>
+                        ヒョ->hyo   as in hue<br>
+                    </p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">part 3: ミャ, ミュ, ミョ</p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">
+                        ミャ->mya   as in mia<br>
+                        ミュ->myu   as in miu<br>
+                        ミョ->myo   as in meow<br>
+                    </p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">part 4: リャ, リュ, リョ</p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">
+                        リャ->rya   as in ree<br>
+                        リュ->ryu   as in ryou<br>
+                        リョ->ryo   as in rio<br>
+                    </p>
+                    <a href="/quiz-kat?lesson=8"><button type="button" class="text-gray-800 dark:text-gray-200 bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded-md mr-20">Start Test</button></a>
+                </div>
+            </div>
+            <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
+                    <h1 class="font-semibold text-2xl mb-4 text-gray-800 dark:text-gray-200 leading-tight">Lesson 9</h1>
+                    <button class="toggle-button font-semibold text-2xl mb-4 text-gray-800 dark:text-gray-200 leading-tight">+</button>
+                </div>
+                <div class="content-details grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8 dark:via-transparent border-b border-gray-200 dark:border-gray-700 hidden">
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">part 1: ギャ, ギュ, ギョ</p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">
+                        ギャ->gya   as in ga<br>
+                        ギュ->gyu   as in gyou<br>
+                        ギョ->gyo   as in go<br>
+                    </p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">part 2: ジャ, ジュ, ジョ</p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">
+                        ジャ->ja   as in jay<br>
+                        ジュ->ju   as in july<br>
+                        ジョ->jo   as in joe<br>
+                    </p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">part 3: ビャ, ビュ, ビョ</p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">
+                        ビャ->bya   as in by a<br>
+                        ビュ->byu   as in by u<br>
+                        ビョ->byo   as in by o<br>
+                    </p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">part 4: ピャ, ピュ, ピョ</p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">
+                        ピャ->pya   as in py a<br>
+                        ピュ->pyu   as in py u<br>
+                        ピョ->pyo   as in py o<br>
+                    </p>
+                    <a href="/quiz-kat?lesson=9"><button type="button" class="text-gray-800 dark:text-gray-200 bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded-md mr-20">Start Test</button></a>
+                </div>
+            </div>
+            <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
+                    <h1 class="font-semibold text-2xl mb-4 text-gray-800 dark:text-gray-200 leading-tight">Lesson 10</h1>
+                    <button class="toggle-button font-semibold text-2xl mb-4 text-gray-800 dark:text-gray-200 leading-tight">+</button>
+                </div>
+                <div class="content-details grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8 dark:via-transparent border-b border-gray-200 dark:border-gray-700 hidden">
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">part 13: Double Consonants</p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">
+                        ッカ->kka   as in cat<br>
+                        ッス->ssu   as in kiss<br>
+                        ット->tto   as in bet<br>
+                        ップ->ppu   as in lip<br>
+                        ッリ->rri   as in tree<br>
+                    </p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">Extended Vowels</p>
+                    <p class="mb-8 text-gray-800 dark:text-gray-200">    
+                        アア->aa   as in baa<br>
+                        イイ->ii   as in beef<br>
+                        ウウ->uu   as in boot<br>
+                        エエ->ee   as in beet<br>
+                        オオ->oo   as in boat<br>
+                    </p>
+                    <a href="/quiz-kat?lesson=10"><button type="button" class="text-gray-800 dark:text-gray-200 bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded-md mr-20">Start Test</button></a>
+                </div>
             </div>
         </div>
     </div>

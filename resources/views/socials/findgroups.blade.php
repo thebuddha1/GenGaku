@@ -28,14 +28,14 @@
                 <div class="p-6 lg:p-8 dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
                     @if(session('success'))
                         <div class="alert alert-success">
-                            <p class="mb-8 text-gray-800 dark:text-gray-200">
+                            <p class="mb-8 text-gray-800 dark:text-gray-200" style="color: green !important;">
                                 {{ session('success') }}
                             </p>
                         </div>
                     @endif
                     @if(session('error'))
                         <div class="alert alert-danger">
-                            <p class="mb-8 text-gray-800 dark:text-gray-200">
+                            <p class="mb-8 text-gray-800 dark:text-gray-200" style="color: red !important;">
                                 {{ session('error') }}
                             </p>
                         </div>
@@ -44,8 +44,8 @@
                     <ul id="groupList">
                         @foreach($groups as $group)
                             <li class="flex items-center mb-4">
-                                <span class="mb-8 text-gray-800 dark:text-gray-200 mr-5">{{ $group->group_name }}</span>
-                                <p class="mb-8 text-gray-800 dark:text-gray-200 bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded-md">
+                                <span class="text-gray-800 dark:text-gray-200 mr-5">{{ $group->group_name }}</span>
+                                <p class="text-gray-800 dark:text-gray-200 bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded-md">
                                     <a href="{{ route('request.join', ['groupId' => $group->id]) }}">Request Join</a>
                                 </p>
                             </li>
@@ -57,24 +57,31 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const searchInput = document.getElementById('search');
-            const groupList = document.getElementById('groupList');
-            const groupItems = groupList.getElementsByTagName('li');
+        const searchInput = document.getElementById('search');
+        const groupList = document.getElementById('groupList');
+        const groupItems = groupList.getElementsByTagName('li');
 
-            searchInput.addEventListener('input', function () {
-                const searchTerm = searchInput.value.toLowerCase();
+        searchInput.addEventListener('input', function () {
+            const searchTerm = searchInput.value.toLowerCase();
 
-                for (let i = 0; i < groupItems.length; i++) {
-                    const groupItem = groupItems[i];
-                    const groupName = groupItem.querySelector('span').textContent.toLowerCase();
+            for (let i = 0; i < groupItems.length; i++) {
+                const groupItem = groupItems[i];
+                const groupName = groupItem.querySelector('span').textContent.toLowerCase();
+                const groupSpan = groupItem.querySelector('span');
+                const groupP = groupItem.querySelector('p');
 
-                    if (groupName.includes(searchTerm)) {
-                        groupItem.style.display = 'block';
-                    } else {
-                        groupItem.style.display = 'none';
-                    }
+                if (groupName.includes(searchTerm)) {
+                    groupItem.style.display = 'block';
+                    groupSpan.style.display = 'inline';
+                    groupP.style.display = 'inline';
+                } else {
+                    groupItem.style.display = 'none';
+                    groupSpan.style.display = 'none';
+                    groupP.style.display = 'none';
                 }
-            });
+            }
         });
+    });
+
     </script>
 </x-app-layout>

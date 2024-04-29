@@ -8,8 +8,15 @@
         .invisible {
             display: none;
         }
+        .label.invisible {
+            display: none !important;
+        }
+        .katakana-button {
+            background-color: gray !important;
+        }
+
         .highlight {
-            background-color: yellow;
+            background-color: #444 !important;
         }
         .match-feedback {
             color: green;
@@ -20,16 +27,22 @@
     </style>
 </head>
 <body>
-    <h1>Katakana Test</h1>
+    <h1 class="text-white" style="color: white !important; font-size: 1.5rem; margin-bottom: 50px;">Chose the right sound for the character shown below</h1>
     <div>
-        <label id="katakanaCharacter" for="katakanaCharacter"> {{ $katakana->character }}</label>
+        <label id="katakanaCharacter" for="katakanaCharacter" class="text-white" style="color: white !important; font-size: 3rem; margin-bottom: 50px;"> {{ $katakana->character }}</label>
     </div>
     
     @foreach ($randomSounds as $sound)
-        <button class="katakana-button" data-sound="{{ $sound }}">{{ $sound }}</button>
+        <button
+            class="katakana-button font-semibold text-gray-600 bg-gray-500 rounded-lg px-6 py-3 mt-20 mb-10" 
+            data-sound="{{ $sound }}"
+            style="color: white !important; font-size: 1rem; margin-top: 2rem !important; margin-bottom: 1.5rem !important;"
+        >
+            {{ $sound }}
+        </button>
     @endforeach
     <div>
-        <button id="check-button">Check</button>
+        <button id="check-button" class="font-semibold text-gray-600 bg-gray-500 rounded-lg px-6 py-3" style="color: white !important; font-size: 1rem; background-color: gray !important;">Check</button>
         <div id="feedback"></div>
     </div>
 
@@ -69,10 +82,10 @@
                 var selectedSound = selectedButton.getAttribute('data-sound');
 
                 if (selectedSound === correctSound) {
-                    feedbackDiv.textContent = 'Match!';
+                    feedbackDiv.textContent = 'Correct!';
                     feedbackDiv.className = 'match-feedback';
                 } else {
-                    feedbackDiv.textContent = 'Mismatch!';
+                    feedbackDiv.textContent = 'Incorrect! The right answer is: ' + correctSound;
                     feedbackDiv.className = 'mismatch-feedback';
 
                     mistakes++;
