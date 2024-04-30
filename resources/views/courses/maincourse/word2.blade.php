@@ -7,52 +7,91 @@
 
     <style>
         .invisible {
-            display: none;
+            display: none !important;
+        }
+        label.invisible {
+            display: none !important;
         }
         .green {
-            background-color: green;
-            color: white;
+            background-color: #444 !important;
+            color: white !important;
         }
-
+        .red {
+            background-color: red !important;
+            color: white !important;
+        }
         .locked {
             pointer-events: none;
             opacity: 0.6;
             background-color: initial !important;
             color: initial !important;
         }
-
-        .red {
-            background-color: red;
-            color: white;
+        .word-button {
+            background-color: gray !important;
         }
-
+        .meaning-button {
+            background-color: gray !important;
+        }
+        .word-button.green,
+        .meaning-button.green {
+            background-color: #444 !important;
+        }
+        .word-button.red,
+        .meaning-button.red {
+            background-color: red !important;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="row">
+            <h1 class="text-white" style="color: white !important; font-size: 1.5rem; margin-bottom: 50px;">Match the words with their meaning</h1>
             <div class="col-md-6">
-                <h2>Words</h2>
+                <h2 class="text-white" style="color: white !important; font-size: 1rem; margin-bottom: 6px;">Words</h2>
                 @php
                     shuffle($wordData);
                 @endphp
                 @foreach ($wordData as $word)
                     @if (auth()->user()->profileSettings->kanji)
-                        <button class="word-button" data-id="{{ $word['id'] }}">{{ $word['word'] }}</button>
+                        <button 
+                            class="word-button font-semibold text-gray-600 bg-gray-500 rounded-lg px-6 py-3 mt-20 mb-10" 
+                            data-id="{{ $word['id'] }}"
+                             style="color: white !important; font-size: 1rem; margin-top: 2rem !important; margin-bottom: 1.5rem !important;"
+                        >
+                            {{ $word['word'] }}
+                        </button>
                     @elseif (auth()->user()->profileSettings->hiragana)
-                        <button class="word-button" data-id="{{ $word['id'] }}">{{ $word['word_hir'] }}</button>
+                        <button 
+                            class="word-button font-semibold text-gray-600 bg-gray-500 rounded-lg px-6 py-3 mt-20 mb-10" 
+                            data-id="{{ $word['id'] }}"
+                             style="color: white !important; font-size: 1rem; margin-top: 2rem !important; margin-bottom: 1.5rem !important;"
+                        >
+                            {{ $word['word_hir'] }}
+                        </button>
                     @elseif (auth()->user()->profileSettings->romanji)
-                        <button class="word-button" data-id="{{ $word['id'] }}">{{ $word['word_rom'] }}</button>
+                        <button 
+                            class="word-button font-semibold text-gray-600 bg-gray-500 rounded-lg px-6 py-3 mt-20 mb-10" 
+                            data-id="{{ $word['id'] }}"
+                             style="color: white !important; font-size: 1rem; margin-top: 2rem !important; margin-bottom: 1.5rem !important;"
+                        >
+                            {{ $word['word_rom'] }}
+                        </button>
                     @endif
                 @endforeach
             </div>
             <div class="col-md-6">
-                <h2>Englis words</h2>
+                <h2 class="text-white" style="color: white !important; font-size: 1rem; margin-bottom: 6px;">Englis words</h2>
                 @php
                     shuffle($wordData);
                 @endphp
                 @foreach ($wordData as $word)
-                    <button class="meaning-button" data-id="{{ $word['id'] }}">{{ $word['meaning'] }}</button>
+                    <button 
+                        class="meaning-button font-semibold text-gray-600 bg-gray-500 rounded-lg px-6 py-3 mt-20 mb-10" 
+                        data-id="{{ $word['id'] }}"
+                        style="color: white !important; font-size: 1rem; margin-top: 2rem !important; margin-bottom: 1.5rem !important;"
+                    >
+                        {{ $word['meaning'] }}
+                    </button>
                 @endforeach
             </div>
         </div>
@@ -108,8 +147,8 @@
                                 mistakes++;
                                 mistakesLabel.textContent = mistakes;
                             }
-                            if(expLoss < 30){
-                                expLoss+= 15;
+                            if(expLoss < 10){
+                                expLoss+= 5;
                                 expLossLabel.textContent = expLoss;
                             }
                         }

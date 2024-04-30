@@ -239,7 +239,7 @@ class WritingCourseController extends Controller
         if ($profileProgress) {
             $testProgress = $request->input('testprog');
             $profileProgress->fnshd_tsts_hir += $testProgress;
-            if ($profileProgress->fnshd_tsts_hir >= 6) {
+            if ($profileProgress->fnshd_tsts_hir >= 10) {
                 $profileProgress->fnshd_tsts_hir = 0;
                 $profileProgress->cur_hrgn += 1;
             }
@@ -271,7 +271,7 @@ class WritingCourseController extends Controller
         if ($profileProgress) {
             $testProgress = $request->input('testprog');
             $profileProgress->fnshd_tsts_kat += $testProgress;
-            if ($profileProgress->fnshd_tsts_kat >= 6) {
+            if ($profileProgress->fnshd_tsts_kat >= 10) {
                 $profileProgress->fnshd_tsts_kat = 0;
                 $profileProgress->cur_ktkn += 1;
             }

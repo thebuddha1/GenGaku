@@ -8,8 +8,15 @@
         .invisible {
             display: none;
         }
+        .label.invisible {
+            display: none !important;
+        }
+        .word-button {
+            background-color: gray !important;
+        }
+
         .highlight {
-            background-color: yellow;
+            background-color: #444 !important;
         }
         .match-feedback {
             color: green;
@@ -20,23 +27,29 @@
     </style>
 </head>
 <body>
-    <h1>Word Test</h1>
+    <h1 class="text-white" style="color: white !important; font-size: 1.5rem; margin-bottom: 50px;">Chose the right meaning for the word shown below</h1>
     <div>
         @if (auth()->user()->profileSettings->kanji)
-            <label id="word" for="word">{{ $wordLesson1->word }}</label>
+            <label id="word" for="word" class="text-white" style="color: white !important; font-size: 3rem; margin-bottom: 50px;">{{ $wordLesson1->word }}</label>
         @elseif (auth()->user()->profileSettings->hiragana)
-            <label id="word" for="word">{{ $wordLesson1->word_hir }}</label>
+            <label id="word" for="word" class="text-white" style="color: white !important; font-size: 3rem; margin-bottom: 50px;">{{ $wordLesson1->word_hir }}</label>
         @elseif (auth()->user()->profileSettings->romanji)
-            <label id="word" for="word">{{ $wordLesson1->word_rom }}</label>
+            <label id="word" for="word" class="text-white" style="color: white !important; font-size: 3rem; margin-bottom: 50px;">{{ $wordLesson1->word_rom }}</label>
         @endif
     </div>
         @foreach ($random as $mean)
             @if (!in_array($mean, array_slice($random, 0, $loop->index)))
-                <button class="word-button" data-mean="{{ $mean }}">{{ $mean }}</button>
+                <button 
+                    class="word-button font-semibold text-gray-600 bg-gray-500 rounded-lg px-6 py-3 mt-20 mb-10"
+                    data-mean="{{ $mean }}"
+                    style="color: white !important; font-size: 1rem; margin-top: 2rem !important; margin-bottom: 1.5rem !important;"
+                >
+                    {{ $mean }}
+                </button>
             @endif
         @endforeach
     <div>
-        <button id="check-button">Check</button>
+        <button id="check-button" class="font-semibold text-gray-600 bg-gray-500 rounded-lg px-6 py-3" style="color: white !important; font-size: 1rem; background-color: gray !important;">Check</button>
         <div id="feedback"></div>
     </div>
 
@@ -76,15 +89,15 @@
             var selectedMeaning = selectedButton.getAttribute('data-mean');
 
             if (selectedMeaning === correctMeaning) {
-                feedbackDiv.textContent = 'Match!';
+                feedbackDiv.textContent = 'Correct!';
                 feedbackDiv.className = 'match-feedback';
             } else {
-                feedbackDiv.textContent = 'Mismatch!';
+                feedbackDiv.textContent = 'Incorrect! The right answer is ' + correctMeaning;
                 feedbackDiv.className = 'mismatch-feedback';
 
                 mistakes++;
                 mistakesLabel.textContent = mistakes;
-                expLoss+= 15;
+                expLoss+= 5;
                 expLossLabel.textContent = expLoss;
             }
 

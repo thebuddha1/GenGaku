@@ -194,11 +194,11 @@ class MainCourseController extends Controller
         if ($profileProgress) {
             $testProgress = $request->input('testprog');
             $profileProgress->fnshd_tsts += $testProgress;
-            if ($profileProgress->fnshd_tsts >= 6) {
+            if ($profileProgress->fnshd_tsts >= 10) {
                 $profileProgress->fnshd_tsts = 0;
                 $profileProgress->cur_lsn += 1;
             }
-            if ($profileProgress->cur_lsn >= 5) {
+            if ($profileProgress->cur_lsn >= 3) {
                 $profileProgress->cur_lsn = 1;
                 $profileProgress->cur_chpt += 1;
             }

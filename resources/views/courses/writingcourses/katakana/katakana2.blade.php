@@ -129,8 +129,8 @@
                                 mistakes++;
                                 mistakesLabel.textContent = mistakes;
                             }
-                            if(expLoss < 30){
-                                expLoss+= 15;
+                            if(expLoss < 10){
+                                expLoss+= 5;
                                 expLossLabel.textContent = expLoss;
                             }
                         }

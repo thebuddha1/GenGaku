@@ -30,7 +30,7 @@
 
             <div id="finalContainer" style="display:none;">
                 <h1 class="text-white" style="color: white !important; font-size: 2rem; margin-bottom: 50px;">
-                    Congratulations! You've completed 15 quizzes.
+                    Congratulations! You've completed the test.
                 </h1>
                 <div>
                     <label id="experienceLabel" class="text-white" style="color: white !important; font-size: 1.5rem; margin-bottom: 50px;">your experience: </label>
@@ -72,7 +72,7 @@
 
         async function loadNextQuiz() {
             document.getElementById('experienceInput').value = experience;
-            if(mistakes > 2){
+            if(mistakes > 5){
                 testprogress = 0;
             }
             document.getElementById('testProgressInput').value = testprogress;
@@ -97,7 +97,7 @@
             document.getElementById('loadQuizButton').disabled = false;
 
 
-            if (pressCount === 5) {
+            if (pressCount === 16) {
                 document.getElementById('quizContainer').style.display = 'none';
                 document.getElementById('pressContainer').style.display = 'none';
                 document.getElementById('finalContainer').style.display = 'block';

@@ -106,7 +106,7 @@
 
                 mistakes++;
                 mistakesLabel.textContent = mistakes;
-                expLoss+= 15;
+                expLoss+= 5;
                 expLossLabel.textContent = expLoss;
             }
         });

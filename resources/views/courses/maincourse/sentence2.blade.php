@@ -6,7 +6,13 @@
     <title>Document</title>
     <style>
         .invisible {
-            display: none;
+            display: none !important;
+        }
+        .label.invisible {
+            display: none !important;
+        }
+        .sentence-button {
+            background-color: gray !important;
         }
         .match-feedback {
             color: green;
@@ -19,22 +25,22 @@
 <body>
     <div>
         <div style="margin-bottom: 10px;">
-            <label for="hiraganaInput">kaka:</label>
+            <label for="hiraganaInput" class="text-white" style="color: white !important; font-size: 1.5rem; margin-bottom: 50px;">What does this mean:</label>
         </div>
         <div style="margin-bottom: 10px;">
             @if (auth()->user()->profileSettings->kanji)
-                <label style="font-size: 20px;">{{ $sentence }}</label>
+                <label class="text-white" style="color: white !important; font-size: 2rem; margin-bottom: 50px;">{{ $sentence }}</label>
             @elseif (auth()->user()->profileSettings->hiragana)
-                <label style="font-size: 20px;">{{ $sentence_hir }}</label>
+                <label class="text-white" style="color: white !important; font-size: 2rem; margin-bottom: 50px;">{{ $sentence_hir }}</label>
             @elseif (auth()->user()->profileSettings->romanji)
-                <label style="font-size: 20px;">{{ $sentence_rom }}</label>
+                <label class="text-white" style="color: white !important; font-size: 2rem; margin-bottom: 50px;">{{ $sentence_rom }}</label>
             @endif
         </div>
         <div style="margin-bottom: 10px;">
             <label class="invisible" id="solutionLable" style="font-size: 20px;">{{ $meaning_en }}</label>
         </div>
         <div style="margin-bottom: 10px;">
-            <input type="text" id="sentenceInput" name="sentenceInput">
+            <input type="text" id="sentenceInput" name="sentenceInput" style="width: 400px; padding: 10px; border-radius: 5px; text-align: center;">
         </div>
     </div>
 
@@ -42,14 +48,20 @@
         <div style="margin-bottom: 10px;">
             @foreach ($sentenceArray as $sentence)
                 @if ($sentence !== null && trim($sentence) !== '')
-                    <button style="margin-right: 5px;" class="sentence-button" data-sentence="{{ $sentence }}">{{ $sentence }}</button>
+                    <button 
+                        class="sentence-button font-semibold text-gray-600 bg-gray-500 rounded-lg px-6 py-3 mt-20 mb-10"
+                        data-sentence="{{ $sentence }}"
+                        style="color: white !important; font-size: 1rem; margin-top: 2rem !important; margin-bottom: 1.5rem !important;"
+                    >
+                        {{ $sentence }}
+                    </button>
                 @endif
             @endforeach
         </div>
     </div>
 
     <div>
-        <button style="margin-top: 10px;" id="check-button">Check</button>
+        <button id="check-button" class="font-semibold text-gray-600 bg-gray-500 rounded-lg px-6 py-3" style="color: white !important; font-size: 1rem; background-color: gray !important;">Check</button>
         <div id="feedback"></div>
     </div>
 
@@ -95,15 +107,15 @@
             var solutionLableText = solutionLable.textContent.trim();
 
             if (textBoxValue === solutionLableText) {
-                feedbackDiv.textContent = 'Match!';
+                feedbackDiv.textContent = 'Correct!';
                 feedbackDiv.className = 'match-feedback';
             } else {
-                feedbackDiv.textContent = 'Mismatch!';
+                feedbackDiv.textContent = 'Incorrect! The right answer is ' + solutionLableText;
                 feedbackDiv.className = 'mismatch-feedback';
 
                 mistakes++;
                 mistakesLabel.textContent = mistakes;
-                expLoss+= 15;
+                expLoss+= 5;
                 expLossLabel.textContent = expLoss;
             }
         });

@@ -58,15 +58,15 @@ Route::middleware([
     //íráskurzus tesztek
     Route::get('/quiz-hir', function () {
         return view('courses\writingcourses\hiragana\hiragana_test');
-    });
+    })->middleware('checkforhirtests');
     
     Route::get('/quiz-kat', function () {
         return view('courses\writingcourses\katakana\katakana_test');
-    });
+    })->middleware('checkforkattests');
     //főkurzus teszt
     Route::get('/quiz-main', function () {
         return view('courses\maincourse\main_test');
-    });
+    })->middleware('checkformaintests');
     //íráskurzusok
     Route::get('/hiragana-course', function () {
         return view('courses\hiragana_course');
