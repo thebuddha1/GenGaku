@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WritingCourseController;
 use App\Http\Controllers\MainCourseController;
 use App\Http\Controllers\GroupsController;
+use App\Http\Controllers\Controller;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,6 +28,9 @@ Route::post('/groups/{groupId}/invite/{invitationId}/accept', [GroupsController:
 Route::post('/groups/invite/{invitationId}/reject', [GroupsController::class, 'rejectInvitation'])->name('groups.invite.reject');
 Route::post('/groups/{groupId}/leave', [GroupsController::class, 'leaveGroup'])->name('groups.leave');
 Route::post('/groups/{groupId}/send-message', [GroupsController::class, 'sendGroupMessage'])->name('groups.sendMessage');
+
+Route::post('/update-profile-settings', [Controller::class, 'updateProfileSettings'])->name('update.profile.settings');
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -90,8 +94,6 @@ Route::middleware([
     Route::view('/friends', 'socials/friendsmain')->name('socials/friendsmain');
     Route::get('/groups', [GroupsController::class, 'userGroups'])->name('groups.uGroups');
     Route::view('/recommendations', 'recommendations')->name('recommendations');
+    Route::view('/profile-statistics', 'profile/profile-statistics')->name('profile.statistics');
 
-
-    //
-    //Route::post('/update-user-experience', 'WritingCourseController@updateUserExperience');
 });

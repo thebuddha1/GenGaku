@@ -13,6 +13,35 @@
                 <h1 class="font-semibold text-2xl mb-4 text-gray-800 dark:text-gray-200 leading-tight">Welcome to the Main course</h1>
             </div>
                 <div class="bg-gray-200 dark:bg-gray-800 bg-opacity-25">
+                    <div class="bg-gray-200 dark:bg-gray-800 bg-opacity-25 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8 dark:via-transparent border-b border-gray-200 dark:border-gray-700"">
+                        <form action="{{ route('update.profile.settings') }}" method="POST">
+                            @csrf
+                            <h1 class="mb-8 text-gray-800 dark:text-gray-200">Choose how you want to have the words written in the main course</h1>
+                            <div id="profile-settings" style="display: flex; flex-wrap: wrap;">
+                                <p class="mb-8 text-gray-800 dark:text-gray-200 pr-4"><input type="checkbox" name="kanji" value="1" {{ auth()->user()->profileSettings->kanji ? 'checked' : '' }}> Kanji</p>
+                                <p class="mb-8 text-gray-800 dark:text-gray-200 pr-4"><input type="checkbox" name="hiragana" value="1" {{ auth()->user()->profileSettings->hiragana ? 'checked' : '' }}> Hiragana</p>
+                                <p class="mb-8 text-gray-800 dark:text-gray-200"><input type="checkbox" name="romanji" value="1" {{ auth()->user()->profileSettings->romanji ? 'checked' : '' }}> Romanji</p>
+                            </div>
+                            <button type="submit" class="text-gray-800 dark:text-gray-200 bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded-md mr-20">Save</button>
+                        </form>
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                                
+                                checkboxes.forEach(function(checkbox) {
+                                    checkbox.addEventListener('change', function() {
+                                        checkboxes.forEach(function(cb) {
+                                            if (cb !== checkbox) {
+                                                cb.checked = false;
+                                            }
+                                        });
+                                    });
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div class="bg-gray-200 dark:bg-gray-800 bg-opacity-25">
                     <div class="bg-gray-200 dark:bg-gray-800 bg-opacity-25 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8">
                         
                         <p class="mb-8 text-gray-800 dark:text-gray-200">
