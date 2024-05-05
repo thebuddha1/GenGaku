@@ -169,7 +169,6 @@
                                     これ は おいしい ラーメン です。(Kore wa oishii ramen desu.) -> This is tasty ramen.<br>
                                     それ は 田中さん です。(Sore wa Tanaka-san desu.) -> That is Tanaka.<br>
                                     いいえ、ケン です。(Iie, Ken desu.) -> No, I’m Ken.<br>
-                                    <!--
                                     どうぞ よろしく、ナオミさん。(Douzo yoroshiku, Naomi-san.) -> Nice to meet you, Naomi.<br>
                                     これ は おいしい です か？(Kore wa oishii desu ka?) -> Is this tasty?<br>
                                     はい、ケン です。(Hai, Ken desu.) -> Yes, I’m Ken.<br>
@@ -181,7 +180,8 @@
                                     どうぞ よろしく(nice to meet you) -> douzo yoroshiku<br>
                                     また 明日(see you tomorrow) -> mata ashite<br>
                                     私 の 名前 は ケン(Watashi no namae wa Ken) -> My name is Ken<br>
-                        -->
+                                    <!--
+                                -->
                                 </p>
                                 <a href="/quiz-main?chapter=1&lesson=2"><button type="button" class="text-gray-800 dark:text-gray-200 bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded-md mr-20">Start Test</button></a>
                             </div>
