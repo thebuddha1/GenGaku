@@ -20,7 +20,7 @@
         <div class="text-center" style="background-color: #1f2937 !important; padding: 60px; border-radius: 30px;">
             <div id="quizContainer">
                 <h1 class="text-white" style="color: white !important; font-size: 2rem; margin-bottom: 50px;">
-                    Press the next button to start the quiz
+                    Press the next button to start the test
                 </h1>
             </div>
             <div id="pressContainer">
@@ -43,7 +43,7 @@
                         @csrf
                         <input type="hidden" id="experienceInput" name="experience" value="100">
                         <input type="hidden" id="testProgressInput" name="testprog" value="1">
-                        <h5 class="text-white" style="color: white !important; font-size: 1rem; margin-bottom: 50px;">Press the button below to save your progress and go back to the lessons</h5>
+                        <h5 class="text-white" style="color: white !important; font-size: 1rem; margin-bottom: 50px;">Go back to the lessons</h5>
                         <button type="submit" class="font-semibold text-gray-600 bg-gray-500 rounded-lg px-6 py-3" style="color: white !important; font-size: 1rem; background-color: gray !important;">Back to lessons</button>
                     </form>
                 </div>

@@ -87,6 +87,7 @@ Route::middleware([
         return view('socials\group');
     });
     Route::get('/groups-overview/{groupId}', [GroupsController::class, 'overview'])->name('groups.overview');
+    Route::get('/group-member/{memberId}', [GroupsController::class, 'member'])->name('groups.member');
 
     //menüpontok
     Route::view('/maincourse-start', 'courses/maincourse-start')->name('courses/maincourse.start');

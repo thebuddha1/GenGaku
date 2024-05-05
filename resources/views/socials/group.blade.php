@@ -57,7 +57,9 @@
                     <h2 class="mb-4 text-gray-800 dark:text-gray-200"><strong>Group Members:</strong></h2>
                     <ul>
                         @foreach($groupMembers as $member)
-                            <li class="mb-1 text-gray-800 dark:text-gray-200">{{ $member->name }}</li>
+                            <li class="mb-1 text-gray-800 dark:text-gray-200">
+                                <a href="{{ route('groups.member', ['memberId' => $member->id]) }}">{{ $member->name }}</a>
+                            </li>
                         @endforeach
                     </ul>
                 </div>

@@ -9,6 +9,8 @@ use App\Models\GroupMessages;
 use App\Models\User;
 use App\Models\GroupJoinrequest;
 use App\Models\GroupInvitation;
+use App\Models\ProfileStatistic;
+use App\Models\ProfileProgression;
 
 class GroupsController extends Controller
 {
@@ -226,6 +228,18 @@ class GroupsController extends Controller
         
         return redirect()->route('groups.overview', ['groupId' => $groupId])->with('success', 'Message sent successfully!');
 
+    }
+
+    public function member($memberId){
+        $user = User::findOrFail($memberId);
+        $profileStatistics = ProfileStatistic::where('user_id', $memberId)->first();
+        $profileProgression = ProfileProgression::where('user_id', $memberId)->first();
+
+        return view('socials.member-profile', [
+            'user' => $user,
+            'profileStatistics' => $profileStatistics,
+            'profileProgression' => $profileProgression
+        ]);
     }
 
 }

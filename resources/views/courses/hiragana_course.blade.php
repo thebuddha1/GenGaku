@@ -27,7 +27,7 @@
                     </p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8 dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
                         <p class="mb-8 text-gray-800 dark:text-gray-200">Current lesson you are at: {{ auth()->user()->profileProgression->cur_hrgn }}</p>
-                        <p class="mb-8 text-gray-800 dark:text-gray-200">Finished tests in current lesson: {{ auth()->user()->profileProgression->fnshd_tsts_hir }}</p>
+                        <p class="mb-8 text-gray-800 dark:text-gray-200">Finished tests in current lesson: {{ auth()->user()->profileProgression->fnshd_tsts_hir }}/10</p>
                     </div>
                     <!---->
                     <div>
