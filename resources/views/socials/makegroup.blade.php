@@ -13,7 +13,7 @@
                     <ul style="list-style-type: none; margin: 0; padding: 0;">
                         <li style="display: inline; margin-right: 20px;" class="mb-8 text-gray-800 dark:text-gray-200"><a href="/groups">My Groups</a></li>
                         <li style="display: inline; margin-right: 20px;" class="mb-8 text-gray-800 dark:text-gray-200"><a href="/group-find">Find Group</a></li>
-                        <li style="display: inline;"><a href="/group-make" class="mb-8 text-gray-800 dark:text-gray-200">Make New Group</a></li>
+                        <li style="display: inline;"><a href="/group-make" class="mb-8 text-gray-800 dark:text-gray-200">Create New Group</a></li>
                     </ul>
                 </div>
                 <div class="p-6 lg:p-8 dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
@@ -31,7 +31,7 @@
                             <textarea id="groupmessage" name="groupmessage" rows="4" cols="50" style="width: 400px; padding: 8px; border-radius: 5px; vertical-align: middle;"></textarea>
                         </div>
 
-                        <button type="submit" class="text-gray-800 dark:text-gray-200 bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded-md">Make New Group</button>
+                        <button type="submit" class="text-gray-800 dark:text-gray-200 bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded-md">Create New Group</button>
                     </form>
                     @if(session('error'))
                         <div class="alert alert-danger">
