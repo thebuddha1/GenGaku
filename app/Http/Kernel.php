@@ -67,5 +67,7 @@ class Kernel extends HttpKernel
         'checkforhirtests' => \App\Http\Middleware\CheckForHirTests::class,
         'checkforkattests' => \App\Http\Middleware\CheckForKatTests::class,
         'checkformaintests' => \App\Http\Middleware\CheckForMainTests::class,
+        'checkgroup' => \App\Http\Middleware\CheckGroups::class,
+        'checkmember' => \App\Http\Middleware\CheckGroupMember::class,
     ];
 }

@@ -86,7 +86,7 @@
 
             var pressCountLabel = document.getElementById('pressCountLabel');
             pressCountLabel.style.display = 'block';
-            pressCountLabel.textContent = 'Press count: ' + pressCount + '/15';
+            pressCountLabel.textContent = 'Quiz ' + pressCount + '/15';
 
             var experienceLabel = document.getElementById('experienceLabel');
             experienceLabel.textContent = 'You got ' + experience + ' experience from the test';
@@ -132,8 +132,6 @@
                                 expLoss = window.expLoss;
                             }
                         }
-                        
-                        // Check buttons on quiz load
                         checkButtonsLocked();
                     } else {
                         console.error('Failed to fetch quiz content.');
@@ -155,8 +153,6 @@
             
             var mistakeLabel = document.getElementById('mistakesLabel');
             var mistake = mistakeLabel.textContent;
-            //console.log("mistakes before add:", mistakes);
-            //console.log("number of mistakes in current quiz:", mistake);
             for (var i = 0; i < buttons.length; i++) {
                 if (!buttons[i].disabled) {
                     allButtonsLocked = false;
@@ -171,11 +167,13 @@
                     }
                 }
                 mistakes += parseInt(mistake);
-                //console.log("mistakes after add:", mistakes);
             }
             document.getElementById('loadQuizButton').disabled = !allButtonsLocked;
         }
         document.getElementById('quizContainer').addEventListener('click', checkButtonsLocked);
+        //console.log("mistakes before add:", mistakes);
+        //console.log("number of mistakes in current quiz:", mistake);
+        //console.log("mistakes after add:", mistakes);
     </script>
 </body>
 </html>

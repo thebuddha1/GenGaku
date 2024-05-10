@@ -30,9 +30,14 @@
                     While you are going through the chapters and lessons, sometimes check out the table of content below and see if anything interests you. <br>
                 </p>
             </div>
+            <!--Tartalom jegyzék-->
             <div class="bg-gray-200 dark:bg-gray-800 bg-opacity-25 lg:gap-8 p-6 lg:p-8 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
                 <li><a href="#ways-of-saying-I-and-you" class="mb-2 text-gray-800 dark:text-gray-200">The many ways of saying 'I' and 'you'</a></li>
                 <li><a href="#honorifics-beyond-san" class="mb-2 text-gray-800 dark:text-gray-200">Honorifics beyond 'san'</a></li>
+                <!--<li><a href="#..." class="mb-2 text-gray-800 dark:text-gray-200">..</í></li> -->
+                <!--<li><a href="#..." class="mb-2 text-gray-800 dark:text-gray-200">..</í></li> -->
+                <!--<li><a href="#..." class="mb-2 text-gray-800 dark:text-gray-200">..</í></li> -->
+                <!--<li><a href="#..." class="mb-2 text-gray-800 dark:text-gray-200">..</í></li> -->
             </div>
             <div id="ways-of-saying-I-and-you" class="bg-gray-200 dark:bg-gray-800 bg-opacity-25 lg:gap-8 p-6 lg:p-8 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
                 <h1 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">The many ways of saying 'I' and 'you'</h1>

@@ -86,7 +86,7 @@
 
             var pressCountLabel = document.getElementById('pressCountLabel');
             pressCountLabel.style.display = 'block';
-            pressCountLabel.textContent = 'Press count: ' + pressCount + '/15';
+            pressCountLabel.textContent = 'Quiz ' + pressCount + '/15';
 
             var experienceLabel = document.getElementById('experienceLabel');
             experienceLabel.textContent = 'You got ' + experience + ' experience from the test';

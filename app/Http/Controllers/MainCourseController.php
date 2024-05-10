@@ -154,8 +154,7 @@ class MainCourseController extends Controller
                         $wordToAdd = $word['word_hir'];
                     } elseif ($system == 3) {
                         $wordToAdd = $word['word_rom'];
-                    }
-                    elseif ($system == 4) {
+                    } elseif ($system == 4) {
                         $wordToAdd = $word['meaning_en'];
                     }
                     if (!$uniqueWords->contains($wordToAdd)) {

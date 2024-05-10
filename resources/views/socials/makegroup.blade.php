@@ -17,7 +17,7 @@
                     </ul>
                 </div>
                 <div class="p-6 lg:p-8 dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
-                    <h1 class="mb-2 text-gray-800 dark:text-gray-200">Make New Group</h1>
+                    <h1 class="mb-2 text-gray-800 dark:text-gray-200">New Group</h1>
                 </div>
                 <div class="p-6 lg:p-8 dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
                     <form method="POST" action="{{ route('save-group') }}">

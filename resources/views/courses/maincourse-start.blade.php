@@ -271,7 +271,7 @@
                                     <br>
                                     Prashes <br>
                                     
-                                    ご飯 です(gohan desu) -> It is rice<br>
+                                    
                                 </p>
                                 <a href="/quiz-main?chapter=2&lesson=1"><button type="button" class="text-gray-800 dark:text-gray-200 bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded-md mr-20">Start Test</button></a>
                             </div>

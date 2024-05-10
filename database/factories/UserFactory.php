@@ -33,6 +33,32 @@ class UserFactory extends Factory
         ];
     }
 
+    public function configure()
+    {
+        return $this->afterCreating(function (User $user) {
+            $user->profileSettings()->create([
+                'kanji' => true,
+                'hiragana' => false,
+                'romanji' => false,
+            ]);
+
+            $user->profileStatistic()->create([
+                'experience' => 0,
+                'finished_tests' => 0,
+            ]);
+
+            $user->profileProgression()->create([
+                'cur_chpt' => 1,
+                'cur_lsn' => 1,
+                'cur_hrgn' => 1,
+                'cur_ktkn' => 1,
+                'fnshd_tsts' => 0,
+                'fnshd_tsts_hir' => 0,
+                'fnshd_tsts_kat' => 0,
+            ]);
+        });
+    }
+
     /**
      * Indicate that the model's email address should be unverified.
      */

@@ -101,7 +101,7 @@
         });
 
         checkButton.addEventListener('click', function () {
-            disableButtons(); // Disable buttons on check
+            disableButtons();
 
             var textBoxValue = textBox.value.trim();
             var solutionLableText = solutionLable.textContent.trim();

@@ -86,8 +86,8 @@ Route::middleware([
     Route::get('/group-show', function () {
         return view('socials\group');
     });
-    Route::get('/groups-overview/{groupId}', [GroupsController::class, 'overview'])->name('groups.overview');
-    Route::get('/group-member/{memberId}', [GroupsController::class, 'member'])->name('groups.member');
+    Route::get('/groups-overview/{groupId}', [GroupsController::class, 'overview'])->name('groups.overview')->middleware('checkgroup');
+    Route::get('/group-member/{memberId}', [GroupsController::class, 'member'])->name('groups.member')->middleware('checkmember');
 
     //menüpontok
     Route::view('/maincourse-start', 'courses/maincourse-start')->name('courses/maincourse.start');

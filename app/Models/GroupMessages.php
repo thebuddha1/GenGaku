@@ -14,4 +14,9 @@ class GroupMessages extends Model
         'group_id',
         'message',
     ];
+
+    public function group()
+    {
+        return $this->belongsTo(Gropup::class);
+    }
 }

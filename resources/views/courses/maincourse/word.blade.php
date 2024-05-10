@@ -103,7 +103,6 @@
 
             feedbackGiven = true;
 
-            // Disable all buttons and the Check button after feedback
             buttons.forEach(function (btn) {
                 btn.disabled = true;
             });
