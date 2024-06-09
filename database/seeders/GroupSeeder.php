@@ -9,7 +9,7 @@ use App\Models\Group;
 class GroupSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run the database seeds. 
      */
     public function run()
     {

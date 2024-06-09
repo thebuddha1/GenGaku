@@ -59,6 +59,6 @@ class SentenceSeeder extends Seeder
 
         foreach ($sentences as $sentence) {
             Sentence::create($sentence);
-        }
+        } 
     }
 }

@@ -11,7 +11,7 @@ class KatakanaSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run()
+    public function run() 
     {
         $characters = [
             ['character' => 'ア', 'sound' => 'a', 'lesson' => 1],

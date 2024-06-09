@@ -68,6 +68,6 @@ class WordSeeder extends Seeder
 
         foreach ($words as $word) {
             Word::create($word);
-        }
+        } 
     }
 }
